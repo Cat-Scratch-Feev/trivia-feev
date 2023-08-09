@@ -1,4 +1,5 @@
 //import logo from './logo.svg';
+import './reset.css';
 import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Component Imports
 import Header from './components/header.js';
 import SideNav from './components/side-nav.js';
+import Footer from './components/footer.js';
 // Page Imports
 import Home from './pages/home.js';
 const client = new ApolloClient({
@@ -18,9 +20,11 @@ function App() {
     <ApolloProvider client={client}>
     <div className="App">
       <Header/>
+      <div className = "feev__page--wrap">
+        <SideNav/>
       <Router>
-        <div className="container">
-            <SideNav/>
+        <div className="feev__router-page--wrap">
+            
             {/* Wrap Route elements in a Routes component */}
             <Routes>
               {/* Define routes using the Route component to render different page components at different paths */}
@@ -36,8 +40,10 @@ function App() {
                 element={<Profile />} 
               /> */}
             </Routes>
+            <Footer/>
           </div>
       </Router>
+      </div>
     </div>
     </ApolloProvider>
   );
