@@ -3,7 +3,7 @@ import React from 'react';
 
 const SideNav = () => {
     return (
-        <div className="sideNav__wrap">
+        <div className="sideNav__wrap mobile__hidden">
             <nav>
                 <ul className="sideNav__list">
                     <li><i class="fa-solid fa-house"></i> home</li>
