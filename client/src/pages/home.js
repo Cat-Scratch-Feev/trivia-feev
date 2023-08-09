@@ -2,6 +2,8 @@ import React from 'react';
 
 
 const Home = () => {
-    <div></div>
+    return (
+        <div className="feev__home"></div>
+    );
 };
 export default Home;
