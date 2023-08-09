@@ -4,9 +4,9 @@ import React from 'react';
 const Header = () => {
     return (
         <div className="header__wrap">
-            <div className="header__name">
+            <div className="name__wrap header__name">
                 <i className="fa-solid fa-cat header__name--icon"></i>
-                <h1>feev<span className="header__name--color">.io</span></h1> 
+                <h1 className="header__name--title">feev<span className="header__name--color">.io</span></h1> 
             </div>
            <div className="dropdown">
                 <button className="btn  dropdown-toggle user__nav--button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
