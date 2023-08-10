@@ -4,9 +4,10 @@ const LeaderBoard = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        // This should fetch user data from your API or database
+        // Fetch user data from your API or database
         // Replace this with your actual API or database call
-        fetch('your-api-endpoint')
+        // TODO add api endpoint for quiz once it is set up 
+        fetch('')
             .then(response => response.json())
             .then(data => {
                 // Sort the users by score
@@ -17,10 +18,9 @@ const LeaderBoard = () => {
                 console.error('Error fetching user data:', error);
             });
     }, []);
-
     return (
         <div>
-            <h2>Global Quiz Leaderboard</h2>
+            <h2>Leaderboard</h2>
             <div className="leaderboard-container">
                 {users.map((user, index) => (
                     <div key={user.id} className="user-entry">
@@ -35,3 +35,9 @@ const LeaderBoard = () => {
 };
 
 export default LeaderBoard;
+
+
+
+
+
+
