@@ -3,6 +3,7 @@
   --main-salmon:#F4AEA0;
   --main-dark-blue:#5C61B3;
   --main-light-blue:#777CD3;
+  --main-lightest-blue:#C9C5EF;
   --main-yellow:#F3C771;
   --main-background:#F1F0FF;
   --bs-btn-active-bg:#5C61B3;
@@ -36,7 +37,7 @@ header{
   font-size:2.5rem;
   font-weight:bolder;
 }
-.header__name, .dropdown{
+.header__name, .dropdown, .login__buttons--wrap{
   margin:3rem;
 }
 .header__name--icon {
@@ -61,6 +62,19 @@ header{
 }
 .btn.show{
   color:white;
+}
+/* Header styling continued -- Pre-auth screen*/
+.signup__nav--button{
+  border-radius:75px;
+  height:3rem;
+  width:5rem;
+  background-color:var(--main-dark-blue);
+  border-color: transparent;
+  color:white;
+  margin-left:1rem;
+}
+.login__nav--button{
+  border:none;
 }
 /* Page wrapping*/
 .feev__page--wrap{
@@ -98,6 +112,78 @@ header{
 }
 .feev__home{
   height:80%;
+}
+.feev__landing-wrap{
+  width:100%;
+  height:100%;
+}
+
+/* Login and Signup*/
+.login-signup-page__wrap{
+  height:100%;
+  width:100%;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.login-signup__wrap{
+  margin:3rem;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  /* background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22a%22%3E%3Cpath fill=%22currentColor%22 d=%22M863.5 697Q728 894 490 911.5t-282-197Q164 500 219.5 305T486 134.5q211 24.5 362 195T863.5 697Z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg clip-path=%22url(%23a)%22%3E%3Cpath fill=%22%23C9C5EF%22 d=%22M863.5 697Q728 894 490 911.5t-282-197Q164 500 219.5 305T486 134.5q211 24.5 362 195T863.5 697Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  display:flex;
+  justify-content:center;
+  align-items:center; */
+
+}
+.login-signup__form{
+  display:flex;
+  flex-direction:column;
+  width:35rem;
+  height:35rem;
+  justify-content:center;
+  align-items: center;
+  /* background-color: var(--main-light-blue); */
+  /* border-radius: 5rem 10rem 6rem 4rem / 10rem 6rem 3rem 6rem; */
+  background-color:var(--main-lightest-blue);
+  border-radius: 66% 94% 85% 90% / 55% 68% 90% 85%;
+}
+.form-input{
+  border-radius:74px;
+  border-color:transparent;
+  margin:0.5rem;
+  width:100%;
+}
+.form__label{
+  align-self:flex-start;
+  justify-self: flex-start;
+  font-weight: bolder;
+}
+.form__title{
+  font-size:1.5rem;
+  font-weight: bolder;
+  margin:0.5rem;
+}
+.form__label-input--pair{
+  display:flex;
+  flex-direction: column;
+  margin:0.25rem;
+}
+.login__button{
+  background-color: var(--main-dark-blue);
+  border-radius: 75px;
+  height:3rem;
+  width:5rem;
+  border-color:transparent;
+  color:white;
 }
 /* Footer styling*/
 .footer__wrap{
@@ -148,6 +234,11 @@ header{
     height:80%;
     width:100%;
   }
+  .login-signup__wrap{
+    margin:0rem;
+    /* width:100%;
+    height:75%; */
+  }
 }
 @media (max-width: 600px) {
   .header__name{
@@ -188,5 +279,12 @@ header{
   }
   .feev__router-page--wrap{
     height:100%;
+  }
+  .login-signup__form{
+    margin:0.5rem;
+    border-radius: 86% 100% 85% 100% / 55% 100% 70% 100%;
+  }
+  .form__label-input--pair{
+    width:85%;
   }
 }
