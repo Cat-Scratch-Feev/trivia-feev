@@ -29,9 +29,9 @@ const Quizzes = () => {
                 </div>
                 <h3 className='group-title'>Misc.</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value=''>Sports</div>
-                    <div className='trivia-choice-card' value=''>Mythology</div>
-                    <div className='trivia-choice-card' value=''>Vehicles</div>
+                    <div className='trivia-choice-card' value='21'>Sports</div>
+                    <div className='trivia-choice-card' value='20'>Mythology</div>
+                    <div className='trivia-choice-card' value='28'>Vehicles</div>
                 </div>
             </div>
         </div>
