@@ -7,7 +7,7 @@ const LeaderBoard = () => {
         // Fetch user data from your API or database
         // Replace this with your actual API or database call
         // TODO add api endpoint for quiz once it is set up 
-        fetch('')
+        fetch('your-api-endpoint-here')
             .then(response => response.json())
             .then(data => {
                 // Sort the users by score
