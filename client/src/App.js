@@ -9,7 +9,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import Auth from "./utils/auth";
 // Component Imports
 import Header from "./components/header.js";
 import SideNav from "./components/side-nav.js";
@@ -18,12 +18,13 @@ import Footer from "./components/footer.js";
 import Home from "./pages/home.js";
 import Landing from "./pages/landing-page.js";
 import Login from "./pages/login.js";
+import Signup from "./pages/signup.js";
 // ADD QUIZ SELECTION PAGE
 // import Quizzes from "./pages/quiz-selection.js";
-import Leaderboard from "./pages/leaderboard.js";
+//import Leaderboard from "./pages/leaderboard.js";
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -44,13 +45,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const isLoggedIn = Auth.loggedIn();
   return (
     <ApolloProvider client={client}>
+      <Router>
       <div className="App">
         <Header />
+        {isLoggedIn ? (
+
         <div className="feev__page--wrap">
           <SideNav />
-          <Router>
             <div className="feev__router-page--wrap">
               {/* Wrap Route elements in a Routes component */}
               <Routes>
@@ -58,10 +62,11 @@ function App() {
 
                 {/* Define a default route that will render the Home component */}
                 <Route path="/" element={<Home />} />
-                <Route path="/landing" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                {/* 
                 <Route path="/quizzes" element={<Quizzes />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/leaderboard" element={<Leaderboard />} /> */}
                 {/* Define a route that will take in variable data */}
                 {/* <Route 
                 path="/profiles/:profileId" 
@@ -70,9 +75,20 @@ function App() {
               </Routes>
               <Footer />
             </div>
-          </Router>
+          
         </div>
+        ) : (
+          <div className="feev__landing-wrap">
+            <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+            </Routes>
+            <Footer />
+          </div>
+        )}
       </div>
+      </Router>
     </ApolloProvider>
   );
 }
