@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Auth from "/../utils/auth";
+import Auth from "./../utils/auth";
 
 const Header = () => {
   const logout = (event) => {
@@ -85,12 +85,14 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <Link to="/">
         <div className="name__wrap header__name">
           <i className="fa-solid fa-cat header__name--icon"></i>
           <h1 className="header__name--title">
             feev<span className="header__name--color">.io</span>
           </h1>
         </div>
+        </Link>
         {Auth.loggedIn() ? (
           <div className="dropdown">
             <button
@@ -108,16 +110,22 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <button className="dropdown-item" href="#" onClick={logout}>
                   <i class="fa-solid fa-arrow-right-from-bracket"></i> sign out
-                </a>
+                </button>
               </li>
             </ul>
           </div>
         ) : (
-          <div className="login__buttons--wrap"></div>
+          <div className="login__buttons--wrap">
+            <Link to="/login">
+              <button className="login__nav--button">log in</button>
+            </Link>
+            <Link to="/signup">
+            <button className="signup__nav--button">sign up</button>
+            </Link>
+          </div>
         )}
-        ;
       </header>
     </div>
   );
