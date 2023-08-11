@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 
 const LeaderboardPage = () => {
     return (
-        <div className="feev__leaderboard">
+        <div className="feev__leader-board">
            
         </div>
     )
