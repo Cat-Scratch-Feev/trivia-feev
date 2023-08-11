@@ -48,6 +48,7 @@ const Quiz = () => {
 
     return (
         <div className="feev__home">
+
             {questions.length > 0 && currentQuestionData ? (
                 <>
                     <h2>{currentQuestionData.category}</h2>

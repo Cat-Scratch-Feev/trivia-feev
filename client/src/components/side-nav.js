@@ -11,7 +11,7 @@ const SideNav = () => {
                     
                     <li>
                         <p>
-                        <Link to="/quizzes"><i class="fa-solid fa-list"></i> trivia </Link><i class="fa-solid fa-caret-down"type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"></i>
+                        <Link to="/quizzes"><i class="fa-solid fa-list"></i> trivia </Link> <i class="fa-solid fa-caret-down"type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"></i>
                         </p>
                         <div>
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">

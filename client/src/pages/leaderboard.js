@@ -2,8 +2,8 @@ import React from 'react';
 
 const LeaderboardPage = () => {
     return (
-        <div>
-            
+        <div className="feev__home">
+
         </div>
     )
 }
