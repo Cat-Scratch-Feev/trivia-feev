@@ -22,9 +22,17 @@ const Quiz = () => {
     useEffect(() => {
         fetchQuizData();
     }, [])
+    // Function to shuffle options
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
     // Handle Click
     const handleOptionClick = selectedOption => {
-        if (selectedOption === questions[currentQuestion].correct_answer) {
+        if (selectedOption === currentQuestionData.correct_answer) {
             setScore(score + 10);
         }
         // Move to the next question
@@ -34,6 +42,8 @@ const Quiz = () => {
     };
     // Data for current question
     const currentQuestionData = questions[currentQuestion];
+    // Shuffles the current data
+    const shuffledAnswers = shuffleArray([...currentQuestionData.incorrect_answers, currentQuestionData.correct_answer]);
 
     return (
         <div className="feev__home">
@@ -42,7 +52,7 @@ const Quiz = () => {
                 <>
                     <p>{currentQuestionData.question}</p>
                     <div className="option-holder">
-                        {currentQuestionData.incorrect_answers.map((option, index) => (
+                        {shuffledAnswers.map((option, index) => (
                             <div
                                 key={index}
                                 onClick={() => handleOptionClick(option)}
@@ -51,12 +61,6 @@ const Quiz = () => {
                                 {option}
                             </div>
                         ))}
-                        <div
-                            onClick={() => handleOptionClick(currentQuestionData.correct_answer)}
-                            className="option"
-                        >
-                            {currentQuestionData.correct_answer}
-                        </div>
                     </div>
                     <p>This is the timer space</p>
                     <p>Score: {score}</p>
