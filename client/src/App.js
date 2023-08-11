@@ -23,7 +23,7 @@ import Signup from "./pages/signup.js";
 import Quizzes from "./pages/quiz-selection.js";
 import Leaderboard from "./pages/leaderboard.js";
 import Quiz from "./pages/quiz.js";
-
+import ProfileSettings from"./pages/profile-settings.js";
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
 });
@@ -69,7 +69,8 @@ function App() {
                 
                 <Route path="/quizzes" element={<Quizzes />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/quiz" element={<Quiz/>} /> 
+                <Route path="/quiz" element={<Quiz/>} />
+                <Route path="/profilesettings" element={<ProfileSettings/>} />
                 {/* Define a route that will take in variable data */}
                 {/* <Route 
                 path="/profiles/:profileId" 

@@ -105,9 +105,10 @@ const Header = () => {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <a className="dropdown-item" href="#">
-                  <i class="fa-solid fa-gear"></i> settings
-                </a>
+                <Link to="/profilesettings"><a className="dropdown-item" href="#">
+                
+                  <i class="fa-solid fa-gear"></i> settings 
+                </a></Link>
               </li>
               <li>
                 <button className="dropdown-item" href="#" onClick={logout}>
