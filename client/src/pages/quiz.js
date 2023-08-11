@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const Quiz = () => {
-
     // Setting default state
     const [selectCat, setSelectCat] = useState('24');
     const [questions, setQuestions] = useState([]);
@@ -32,7 +31,7 @@ const Quiz = () => {
     };
     // Handle Click
     const handleOptionClick = selectedOption => {
-        if (selectedOption === currentQuestionData.correct_answer) {
+        if (selectedOption === currentQuestionData?.correct_answer) {
             setScore(score + 10);
         }
         // Move to the next question
@@ -42,13 +41,15 @@ const Quiz = () => {
     };
     // Data for current question
     const currentQuestionData = questions[currentQuestion];
-    // Shuffles the current data
-    const shuffledAnswers = shuffleArray([...currentQuestionData.incorrect_answers, currentQuestionData.correct_answer]);
+    // Shuffles current data
+    const shuffledAnswers = currentQuestionData ? shuffleArray([...currentQuestionData.incorrect_answers, currentQuestionData.correct_answer]) : [];
+
+
 
     return (
         <div className="feev__home">
             <h2>Quiz Title</h2>
-            {questions.length > 0 ? (
+            {questions.length > 0 && currentQuestionData ? (
                 <>
                     <p>{currentQuestionData.question}</p>
                     <div className="option-holder">
