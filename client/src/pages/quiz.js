@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Quiz = () => {
 
     // Setting default state
-    const [selectCat, setSelectCat] = useState('23');
+    const [selectCat, setSelectCat] = useState('24');
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
@@ -38,26 +38,32 @@ const Quiz = () => {
     return (
         <div className="feev__home">
             <h2>Quiz Title</h2>
-            <p>{currentQuestionData.question}</p>
-            <div className="option-holder">
-                {currentQuestionData.incorrect_answers.map((option, index) => (
-                    <div
-                        key={index}
-                        onClick={() => handleOptionClick(option)}
-                        className="option"
-                    >
-                        {option}
+            {questions.length > 0 ? (
+                <>
+                    <p>{currentQuestionData.question}</p>
+                    <div className="option-holder">
+                        {currentQuestionData.incorrect_answers.map((option, index) => (
+                            <div
+                                key={index}
+                                onClick={() => handleOptionClick(option)}
+                                className="option"
+                            >
+                                {option}
+                            </div>
+                        ))}
+                        <div
+                            onClick={() => handleOptionClick(currentQuestionData.correct_answer)}
+                            className="option"
+                        >
+                            {currentQuestionData.correct_answer}
+                        </div>
                     </div>
-                ))}
-                <div
-                    onClick={() => handleOptionClick(currentQuestionData.correct_answer)}
-                    className="option"
-                >
-                    {currentQuestionData.correct_answer}
-                </div>
-            </div>
-            <p>This is the timer space</p>
-            <p>Score: {score}</p>
+                    <p>This is the timer space</p>
+                    <p>Score: {score}</p>
+                </>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     );
 };
