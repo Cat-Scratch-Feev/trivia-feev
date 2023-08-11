@@ -13,6 +13,19 @@ export const QUERY_USERS = gql`
   }
 `;
 
+// Get logged in user
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      password
+      score
+    }
+  }
+`;
+
 // Get a single user by id
 export const QUERY_USER_BY_ID = gql`
   query user($id: ID!) {
