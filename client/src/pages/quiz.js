@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Quiz = () => {
     // Setting default state
-    const [selectCat, setSelectCat] = useState('24');
+    const [selectCat, setSelectCat] = useState('23');
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
@@ -48,9 +48,9 @@ const Quiz = () => {
 
     return (
         <div className="feev__home">
-            <h2>Quiz Title</h2>
             {questions.length > 0 && currentQuestionData ? (
                 <>
+                    <h2>{currentQuestionData.category}</h2>
                     <p>{currentQuestionData.question}</p>
                     <div className="option-holder">
                         {shuffledAnswers.map((option, index) => (
