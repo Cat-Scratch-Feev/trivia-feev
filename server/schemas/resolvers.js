@@ -24,28 +24,44 @@ const resolvers = {
       // Return token and user
       return { token, user };
     },
+
     // Login a user
     login: async (parent, { email, password }) => {
-      // Look up by email
       const user = await User.findOne({ email });
       // If no user found
       if (!user) {
         throw new AuthenticationError("No user found with this email address");
       }
-
       // Check if password is correct
       const correctPw = await user.isCorrectPassword(password);
       // If the password is wrong
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
-
       // Create a new token
       const token = signToken(user);
       // Return token and user
       return { token, user };
     },
-    // TODO: Update Score
+
+    // Update Score
+    updateScore: async (parent, { score }, context) => {
+      if (context.user) {
+        try {
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            // This should increment by the score passed in
+            { $inc: { score: quizScore } },
+            { new: true }
+          );
+          return user;
+        } catch (err) {
+          throw new AuthenticationError("Couldn't update score");
+        }
+      } else {
+        throw new AuthenticationError("Authentication required.");
+      }
+    },
 
     // Update username, email, and password
     updateUser: async (parent, { username, email, password }, context) => {

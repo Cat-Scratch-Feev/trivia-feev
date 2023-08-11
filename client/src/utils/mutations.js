@@ -37,4 +37,14 @@ export const UPDATE_USER_MUTATION = gql`
   }
 `;
 
-// TODO: Add score mutation
+// Update score mutation
+export const UPDATE_SCORE_MUTATION = gql`
+  mutation UpdateScore($score: Int!) {
+    updateScore(score: $score) {
+      _id
+      username
+      email
+      score
+    }
+  }
+`;
