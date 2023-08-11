@@ -3,7 +3,7 @@ import { useState } from 'react';
 const Quizzes = () => {
 
     return (
-        <div>
+        <div className="feev__home">
             <h2>Pick a Category</h2>
             <div className='trivia-card-holder'>
                 <h3 className='group-title'>Human Civilization</h3>
