@@ -22,7 +22,7 @@ const Quiz = () => {
 
 
     return (
-        <div>
+        <div className="feev__home">
             <h2>This is a quiz</h2>
         </div>
     );
