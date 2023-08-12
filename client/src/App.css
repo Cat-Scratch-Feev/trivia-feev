@@ -360,3 +360,22 @@ header{
     margin:1rem;
   }
 }
+
+/* leaderboard styling currently on bottom to not effect line numbers for conflicts  Move into correct positioning once it is finished */
+.feev__leaderboard-page-wrap{
+  height:100%;
+  width:100%;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.feev__leaderboard-wrap{
+  margin:3rem;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}

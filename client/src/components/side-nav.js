@@ -22,7 +22,7 @@ const SideNav = () => {
                         </div>
                         </div></li>
                     
-                    <li><Link to="/leaderboard"><i class="fa-solid fa-trophy"></i></Link> leaders</li>
+                    <li><Link to="/leaderboard"><i class="fa-solid fa-trophy"></i> leaders</Link></li>
                 </ul>
             
             </nav>
