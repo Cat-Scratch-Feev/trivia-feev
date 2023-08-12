@@ -24,8 +24,17 @@ import Quizzes from "./pages/quiz-selection.js";
 import Leaderboard from "./pages/leaderboard.js";
 import Quiz from "./pages/quiz.js";
 import ProfileSettings from"./pages/profile-settings.js";
+
+let uri;
+
+if (process.env.NODE_ENV === 'development'){
+  uri= "http://localhost:3001/graphql";
+} else {
+  uri= "/graphql";
+}
+
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri
 });
 
 const authLink = setContext((_, { headers }) => {
