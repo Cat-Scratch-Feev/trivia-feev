@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 const Quiz = () => {
     // Setting default state
-    const [selectCat, setSelectCat] = useState('23');
+    const [selectCat, setSelectCat] = useState(() => {
+        //Check if there is a selectedCategory in local storage from user selection
+        const storedCategory = localStorage.getItem('selectedCategory');
+        return storedCategory ? storedCategory: '23'; //If no storedCategory, return default value of 23 to avoid bugs or empty selection
+    });
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     // Our api url
+    
     let url = `https://opentdb.com/api.php?amount=10&category=${selectCat}&type=multiple`
 
     // Making the Api call
