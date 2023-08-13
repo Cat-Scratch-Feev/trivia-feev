@@ -1,13 +1,10 @@
 import React from 'react';
-//import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Quizzes = () => {
     const navigate= useNavigate();
 
     const handleChoiceClick= (value) => {
-        //console.log('handleChoiceClick value:', value);
         //Save user's selected option to local storage for use on quiz page 
         localStorage.setItem('selectedCategory', value.toString());
         //Navigate user to quiz starting page on click
