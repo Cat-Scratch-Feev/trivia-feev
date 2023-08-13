@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import he from 'he'; //Import 'he' library to decode api response
 
 const Quiz = ({quizState, setQuizState}) => {
     // Setting default state
@@ -51,8 +52,23 @@ const Quiz = ({quizState, setQuizState}) => {
     // Data for current question
     const currentQuestionData = questions[currentQuestion];
     const finalQuestion = questions.length;
-    // Shuffles current data
-    const shuffledAnswers = currentQuestionData ? shuffleArray([...currentQuestionData.incorrect_answers, currentQuestionData.correct_answer]) : [];
+
+    //Decode html using 'he' library to avoid encoded characters in default api response
+    const decodedCurrentQuestion = currentQuestionData
+    ? {
+        ...currentQuestionData,
+        question: he.decode(currentQuestionData.question),
+        correct_answer: he.decode(currentQuestionData.correct_answer),
+        incorrect_answers: currentQuestionData.incorrect_answers.map(he.decode),
+      }
+    : null;
+    console.log(decodedCurrentQuestion);
+    console.log('Decoded Question:', decodedCurrentQuestion?.question);
+
+    //Shuffle current decoded data
+    const shuffledAnswers = decodedCurrentQuestion
+    ? shuffleArray([...decodedCurrentQuestion.incorrect_answers, decodedCurrentQuestion.correct_answer])
+    : [];
 
     const handleStartQuiz = () => {
         //Transition to the quiz state when the start button is clicked
@@ -70,7 +86,7 @@ const Quiz = ({quizState, setQuizState}) => {
             {quizState === 'quiz' && questions.length > 0 && currentQuestionData ?  (
                 <>
                     <h2>{currentQuestionData.category}</h2>
-                    <p>{currentQuestionData.question}</p>
+                    <p>{decodedCurrentQuestion.question}</p>
                     <div className="option-holder">
                         {shuffledAnswers.map((option, index) => (
                             <button
