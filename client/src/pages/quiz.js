@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Quiz = () => {
+const Quiz = ({quizState, setQuizState}) => {
     // Setting default state
     const [selectCat, setSelectCat] = useState(() => {
         //Check if there is a selectedCategory in local storage from user selection
@@ -10,8 +10,8 @@ const Quiz = () => {
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
+
     // Our api url
-    
     let url = `https://opentdb.com/api.php?amount=10&category=${selectCat}&type=multiple`
 
     // Making the Api call
@@ -39,41 +39,59 @@ const Quiz = () => {
         if (selectedOption === currentQuestionData?.correct_answer) {
             setScore(score + 10);
         }
-        // Move to the next question
-        if (currentQuestion + 1 < questions.length) {
+        if (currentQuestion === finalQuestion - 1){
+            setQuizState('end');
+            return;
+        } else if(currentQuestion + 1 < questions.length){
             setCurrentQuestion(currentQuestion + 1);
         }
+        // Move to the next question
+        
     };
     // Data for current question
     const currentQuestionData = questions[currentQuestion];
+    const finalQuestion = questions.length;
     // Shuffles current data
     const shuffledAnswers = currentQuestionData ? shuffleArray([...currentQuestionData.incorrect_answers, currentQuestionData.correct_answer]) : [];
 
-
+    const handleStartQuiz = () => {
+        //Transition to the quiz state when the start button is clicked
+        setQuizState('quiz');
+    }
 
     return (
         <div className="feev__home">
-
-            {questions.length > 0 && currentQuestionData ? (
+            {quizState === 'start' && (
+                <div>test
+                    <button onClick={handleStartQuiz}>start</button>
+                </div>
+                
+            )}
+            {quizState === 'quiz' && questions.length > 0 && currentQuestionData ?  (
                 <>
                     <h2>{currentQuestionData.category}</h2>
                     <p>{currentQuestionData.question}</p>
                     <div className="option-holder">
                         {shuffledAnswers.map((option, index) => (
-                            <div
+                            <button
                                 key={index}
                                 onClick={() => handleOptionClick(option)}
                                 className="option"
                             >
                                 {option}
-                            </div>
+                            </button>
                         ))}
                     </div>
                     <p>This is the timer space</p>
                     <p>Score: {score}</p>
                 </>
             ) : (
-                <p>Loading...</p>
+                <></>
+            )}
+            {quizState === 'end' &&(
+                <div>
+                    <p>final score: {score}</p>
+                </div>
             )}
         </div>
     );

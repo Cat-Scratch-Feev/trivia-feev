@@ -1,5 +1,5 @@
-//import logo from './logo.svg';
 import "./reset.css";
+import React, { useState } from 'react';
 import "./App.css";
 import {
   ApolloClient,
@@ -56,6 +56,7 @@ const client = new ApolloClient({
 
 function App() {
   const isLoggedIn = Auth.loggedIn();
+  const [quizState, setQuizState] = useState('start');
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -76,9 +77,9 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
 
                 
-                <Route path="/quizzes" element={<Quizzes />} />
+                <Route path="/quizzes" element={<Quizzes quizState={quizState} setQuizState={setQuizState} />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/quiz" element={<Quiz/>} />
+                <Route path="/quiz" element={<Quiz quizState={quizState} setQuizState={setQuizState} />} />
                 <Route path="/profilesettings" element={<ProfileSettings/>} />
                 {/* Define a route that will take in variable data */}
                 {/* <Route 

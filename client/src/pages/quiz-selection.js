@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Quizzes = () => {
+const Quizzes = ({quizState, setQuizState}) => {
     const navigate= useNavigate();
 
     const handleChoiceClick= (value) => {
         //Save user's selected option to local storage for use on quiz page 
         localStorage.setItem('selectedCategory', value.toString());
+        //Set quiz state prior to routing to quiz page, ensure correct flow
+        setQuizState('start');
         //Navigate user to quiz starting page on click
         navigate('/quiz');
     }
