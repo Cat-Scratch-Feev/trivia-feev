@@ -1,38 +1,97 @@
 import React from 'react';
-import { useState } from 'react';
-const Quizzes = () => {
+//import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+const Quizzes = () => {
+    const navigate= useNavigate();
+
+    const handleChoiceClick= (value) => {
+        //console.log('handleChoiceClick value:', value);
+        //Save user's selected option to local storage for use on quiz page 
+        localStorage.setItem('selectedCategory', value.toString());
+        //Navigate user to quiz starting page on click
+        navigate('/quiz');
+    }
     return (
         <div className="feev__home">
-            <h2>Pick a Category</h2>
+            <div className="feev__trivia-select--wrap">
+            <h2 className="trivia__page-title">trivia categories</h2>
+            <p>pick a category!</p>
             <div className='trivia-card-holder'>
                 <h3 className='group-title'>Human Civilization</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value='24'>Politics</div>
-                    <div className='trivia-choice-card' value='25'>Art</div>
-                    <div className='trivia-choice-card' value='22'>Geography</div>
+                    <div className='trivia-choice-card' value='24'  >
+                        <span className="trivia__card--blue"></span>
+                        <button onClick={() => handleChoiceClick('24')}>Politics</button>
+                    </div>
+                    <div className='trivia-choice-card' value='25'>
+                        <span className="trivia__card--pink"></span>
+                        <button onClick={() => handleChoiceClick('25')}>Art</button>
+                    </div>
+                    <div className='trivia-choice-card' value='22'>
+                        <span className="trivia__card--yellow"></span>
+                        <button onClick={() => handleChoiceClick('22')}>Geography</button>
+                    </div>
                 </div>
                 <h3 className='group-title'>Entertainment</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value='11'>Film</div>
-                    <div className='trivia-choice-card' value='12'>Music</div>
-                    <div className='trivia-choice-card' value='14'>TV</div>
-                    <div className='trivia-choice-card' value='15'>Video Games</div>
-                    <div className='trivia-choice-card' value='10'>Books</div>
-                    <div className='trivia-choice-card' value='13'>Theatre</div>
+                    <div className='trivia-choice-card' value='11'>
+                        <span className="trivia__card--blue"></span>
+                        <button onClick={() => handleChoiceClick('11')}>Film</button>
+                    </div>
+                    <div className='trivia-choice-card' value='12'>
+                        <span className="trivia__card--pink"></span>
+                        <button onClick={() => handleChoiceClick('12')}>Music</button>
+                    </div>
+                    <div className='trivia-choice-card' value='14'>
+                        <span className="trivia__card--yellow"></span>
+                        <button onClick={() => handleChoiceClick('14')}>TV</button>
+                    </div>
+                    <div className='trivia-choice-card' value='15'>
+                        <span className="trivia__card--blue"></span>
+                        <button onClick={() => handleChoiceClick('15')}>Video Games</button>
+                    </div>
+                    <div className='trivia-choice-card' value='10'>
+                        <span className="trivia__card--pink"></span>
+                        <button onClick={() => handleChoiceClick('10')}>Books</button>
+                    </div>
+                    <div className='trivia-choice-card' value='13'>
+                        <span className="trivia__card--yellow"></span>
+                        <button onClick={() => handleChoiceClick('13')}>Theatre</button>
+                    </div>
                 </div>
                 <h3 className='group-title'>Science</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value='17'>General</div>
-                    <div className='trivia-choice-card' value='27'>Animals</div>
-                    <div className='trivia-choice-card' value='18'>Computers</div>
+                    <div className='trivia-choice-card' value='17'>
+                        <span className="trivia__card--blue"></span>
+                        <button onClick={() => handleChoiceClick('17')}>General</button>
+                    </div>
+                    <div className='trivia-choice-card' value='27'>
+                        <span className="trivia__card--pink"></span>
+                        <button onClick={() => handleChoiceClick('27')}>Animals</button>
+                    </div>
+                    <div className='trivia-choice-card' value='18'>
+                        <span className="trivia__card--yellow"></span>
+                        <button onClick={() => handleChoiceClick('18')}>Computers</button>
+                    </div>
                 </div>
                 <h3 className='group-title'>Misc.</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value='21'>Sports</div>
-                    <div className='trivia-choice-card' value='20'>Mythology</div>
-                    <div className='trivia-choice-card' value='28'>Vehicles</div>
+                    <div className='trivia-choice-card' value='21'>
+                        <span className="trivia__card--blue"></span>
+                        <button onClick={() => handleChoiceClick('21')}>Sports</button>
+                    </div>
+                    <div className='trivia-choice-card' value='20'>
+                        <span className="trivia__card--pink"></span>
+                        <button onClick={() => handleChoiceClick('20')}>Mythology</button>
+                    </div>
+                    <div className='trivia-choice-card' value='28'>
+                        <span className="trivia__card--yellow"></span>
+                        <button onClick={() => handleChoiceClick('28')}>Vehicles</button>
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     );
