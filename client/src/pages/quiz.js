@@ -112,7 +112,7 @@ const Quiz = ({quizState, setQuizState}) => {
     return (
         <div className="feev__home">
             {quizState === 'start' && questions.length > 0 && currentQuestionData ? (
-                <div className="quiz__wrap">
+                <div className="quiz__wrap quiz__wrap--start">
                     <section className="directions__header">
                         <h2 className="quiz__category quiz__category--start">{currentQuestionData.category}</h2>
                         <div className="timer__block">
@@ -134,22 +134,31 @@ const Quiz = ({quizState, setQuizState}) => {
                 <></>
             )}
             {quizState === 'quiz' && questions.length > 0 && currentQuestionData ?  (
-                <div className="quiz__wrap">
-                    <h2>{currentQuestionData.category}</h2>
-                    <p>{decodedCurrentQuestion.question}</p>
+                <div className="quiz__wrap quiz__wrap--quiz">
+                    <h2 className="quiz__category quiz__category--end">{currentQuestionData.category}</h2>
+                    <h3 className="quiz__question">{decodedCurrentQuestion.question}</h3>
                     <div className="option-holder">
                         {shuffledAnswers.map((option, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleOptionClick(option)}
-                                className="option"
+                                className={`option color-${index % 4}`}
                             >
                                 {option}
                             </button>
                         ))}
                     </div>
-                    <p>Time remaining: {timer} s</p>
-                    <p>Score: {score}</p>
+                    
+                    <section className="quiz__timer-score--wrap">
+                        <div className="timer__block">
+                                <i className="quiz__timer fa-solid fa-stopwatch"></i>
+                                <p className="quiz__timer--text">{timer} s</p>
+                        </div>
+                        <div className="quiz__card--score">
+                                <i className=" quiz-end__score--icon fa-solid fa-coins"></i> 
+                                <p className="score__text">{score}</p>
+                        </div>
+                    </section>
                 </div>
             ) : (
                 <></>
