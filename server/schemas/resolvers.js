@@ -76,7 +76,7 @@ const resolvers = {
 
     updateUser: async (parent, { username, email, password }, context) => {
       if (context.user) {
-        if (context.user._id.toString() !== context.user._id.toString()) {
+        if (context.user._id.toString() !== username()) {
           throw new AuthenticationError(
             "You are not authorized to update this user."
           );
