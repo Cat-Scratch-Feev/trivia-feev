@@ -87,7 +87,7 @@ header{
 .sideNav__wrap{
   width:20%;
   border-right: solid 0.1rem var(--main-dark-blue);
-  height:100%;
+  /* height:100%; */
   display:flex;
   justify-content:center;
  
@@ -109,9 +109,11 @@ header{
 /* Page wrap styling*/
 .feev__router-page--wrap{
   width:80%;
+  display:flex;
+  flex-direction: column;
 }
 .feev__home{
-  height:80%;
+  height:100%;
 }
 .feev__landing-wrap, .feev__landing-page{
   width:100%;
@@ -240,6 +242,115 @@ header{
   font-weight: bolder;
   margin:1rem;
 }
+/* Quiz Category Selection Styling*/
+.feev__trivia-select--wrap{
+  margin:2rem;
+}
+.trivia__page-title{
+  font-size:2rem;
+  font-weight: bolder;
+}
+.group-title{
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.trivia-group{
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.trivia-choice-card{
+  flex-basis:28%;
+  height:12rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:center;
+  margin:1rem;
+}
+.trivia-choice-card > span {
+  height:9rem;
+  width:100%;
+  border-radius: 75px 75px 0 0;
+}
+.trivia__card--blue{
+  background-color: var(--main-lightest-blue);
+}
+.trivia__card--yellow{
+  background-color: var(--main-yellow);
+}
+.trivia__card--pink{
+  background-color: var(--main-salmon);
+}
+.trivia-choice-card > button {
+  width:100%;
+  height:3rem;
+  border-radius: 0 0  75px 75px;
+  border:none;
+  background-color: white;
+}
+/* Quiz Direction Styling */
+.quiz__wrap{
+  margin:3rem;
+}
+/* Quiz Styling*/
+.quiz__category{
+  background-color: var(--main-dark-blue);
+  width:25rem;
+  height:5rem;
+  border-radius: 75px;
+  color:white;
+  margin:auto;
+  font-weight: bolder;
+  font-size:2rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Quiz End Page Styling*/
+.quiz__wrap--end{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quiz__score-card{
+  border-radius: 75px;
+  width:100%;
+  height:7rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1rem;
+}
+.quiz__score-card--blue{
+  background-color: var(--main-lightest-blue);
+}
+.quiz__score-card--pink{
+  background-color: var(--main-salmon);
+}
+.quiz__card--score{
+  background-color: white;
+  width: 10rem;
+  height:4rem;
+  border-radius: 75px;
+  display:flex;
+  flex-flow:row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.quiz-end__score--icon, .score__text{
+  font-size: 2rem;
+  line-height:0;
+  margin:0 0.5rem;
+}
+.quiz-end__score--icon{
+  color:var(--main-yellow);
+}
+.score__message{
+  font-size:2rem;
+  font-weight: bolder;
+}
 /* Footer styling*/
 .footer__wrap{
   width:50%;
@@ -298,8 +409,9 @@ header{
     justify-content:center;
     margin:0;
   }
+  /* TO-DO: Height here causing problems with content on trivia page, but if missing when content is low will cause the footer to fix to the top.. Work out later / Only on mobile*/
   .feev__router-page--wrap{
-    height:80%;
+    /* height:80%; */
     width:100%;
   }
   .login-signup__wrap{
@@ -307,13 +419,15 @@ header{
     /* width:100%;
     height:75%; */
   }
+  .trivia-choice-card{
+    flex-basis:45%;
+  }
 }
+
 @media (max-width: 600px) {
   .header__name{
     margin:1.5rem;
   }
-}
-@media (max-width: 600px) {
   .mobile__hidden{
     display:none;
   }
@@ -345,9 +459,9 @@ header{
   .sideNav__list{
     display:block;
   }
-  .feev__router-page--wrap{
+ /*  .feev__router-page--wrap{
     height:100%;
-  }
+  } */
   .login-signup__form{
     margin:0.5rem;
     width:100%;
@@ -358,6 +472,9 @@ header{
   }
   .feev__landing-main-wrap{
     margin:1rem;
+  }
+  .trivia-choice-card{
+    flex-basis:80%;
   }
 }
 
