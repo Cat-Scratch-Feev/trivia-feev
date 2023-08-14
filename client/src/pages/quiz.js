@@ -114,17 +114,20 @@ const Quiz = ({quizState, setQuizState}) => {
             {quizState === 'start' && questions.length > 0 && currentQuestionData ? (
                 <div className="quiz__wrap">
                     <section className="directions__header">
-                        <h2>{currentQuestionData.category}</h2>
+                        <h2 className="quiz__category quiz__category--start">{currentQuestionData.category}</h2>
                         <div className="timer__block">
-                            <i class="fa-solid fa-stopwatch"></i>
-                            <p>{timer} seconds</p>
+                            <i className="quiz__timer fa-solid fa-stopwatch"></i>
+                            <p className="quiz__timer--text">{timer} s</p>
                         </div>
                         
                     </section>
-                    <h3>you have chosen the {currentQuestionData.category} category!</h3>
-                    <p>you will have 10 seconds per question, with a 5 second penalty for incorrect answers.</p>
-                    <p>your quiz will begin when you press start!</p>
-                    <button onClick={handleStartQuiz}>start</button>
+                    <section className="quiz__directions--blurb">
+                        <h3>you have chosen the {currentQuestionData.category} category!</h3>
+                        <p>you will have <span className="quiz__directions--bold">10</span> seconds per question, with a <span className="quiz__directions--bold">5</span> second penalty for incorrect answers.</p>
+                        <p>your quiz will begin when you press start!</p>
+
+                        <button className="quiz__start-button" onClick={handleStartQuiz}>start</button>
+                    </section>
                 </div>
                 
             ) : (
@@ -153,7 +156,7 @@ const Quiz = ({quizState, setQuizState}) => {
             )}
             {quizState === 'end' && questions.length > 0 && currentQuestionData ?  (
                 <div className="quiz__wrap quiz__wrap--end">
-                    <h2 className="quiz__category">{currentQuestionData.category}</h2> 
+                    <h2 className="quiz__category quiz__category--end">{currentQuestionData.category}</h2> 
                     <div className="quiz__score-card quiz__score-card--blue">
                         <p className="score__message">congrats! you scored: </p>
                         <div className="quiz__card--score">
@@ -168,7 +171,7 @@ const Quiz = ({quizState, setQuizState}) => {
                             <p className="score__text">{score}</p>
                         </div>
                         </div>
-                    <button>save</button>
+                    <button className="quiz__score--save">save</button>
                 </div>
             ) : (
                 <></>
