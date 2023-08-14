@@ -13,6 +13,13 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
+    // Get a single user by _id
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
   Mutation: {
     // Add a user
@@ -34,22 +41,20 @@ const resolvers = {
       }
       // Check if password is correct
       const correctPw = await user.isCorrectPassword(password);
-      // If the password is wrong
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
       // Create a new token
       const token = signToken(user);
-      // Return token and user
       return { token, user };
     },
 
     // Update Score
-    updateScore: async (parent, { score }, context) => {
-      if (context.user) {
+    updateScore: async (parent, { userId, score, quizScore }) => {
+      if (userId) {
         try {
           const user = await User.findOneAndUpdate(
-            { _id: context.user._id },
+            { _id: userId },
             // This should increment by the score passed in
             { $inc: { score: quizScore } },
             { new: true }
