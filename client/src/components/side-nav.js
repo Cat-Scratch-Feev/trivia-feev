@@ -1,15 +1,17 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 
 const SideNav = () => {
     return (
         <div className="sideNav__wrap mobile__hidden">
             <nav>
                 <ul className="sideNav__list">
-                    <li><i class="fa-solid fa-house"></i> home</li>
+                    
+                    <li><Link to="/"><i class="fa-solid fa-house"></i> home</Link></li>
+                    
                     <li>
                         <p>
-                                <i class="fa-solid fa-list"></i> trivia <i class="fa-solid fa-caret-down"type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"></i>
+                        <Link to="/quizzes"><i class="fa-solid fa-list"></i> trivia </Link> <i class="fa-solid fa-caret-down"type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"></i>
                         </p>
                         <div>
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
@@ -20,7 +22,7 @@ const SideNav = () => {
                         </div>
                         </div></li>
                     
-                    <li><i class="fa-solid fa-trophy"></i> leaders</li>
+                    <li><Link to="/leaderboard"><i class="fa-solid fa-trophy"></i> leaders</Link></li>
                 </ul>
             
             </nav>

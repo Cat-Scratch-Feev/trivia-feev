@@ -1,5 +1,17 @@
-// import React from 'react';
-// import { useQuery } from '@apollo/client';
-// import { QUERY_SCORES } from '../utils/queries';
+import React, { useEffect, useState } from 'react';
 
-export default Leaderboard;
+
+// TODO work on front end styling of leaderboard page
+
+
+const LeaderboardPage = () => {
+    return (
+        <div className="feev__leaderboard-page-wrap">
+           <div className="feev__leaderboard-wrap">
+            
+           </div>
+        </div>
+    )
+}
+
+export default LeaderboardPage;

@@ -20,11 +20,21 @@ import Landing from "./pages/landing-page.js";
 import Login from "./pages/login.js";
 import Signup from "./pages/signup.js";
 // ADD QUIZ SELECTION PAGE
-// import Quizzes from "./pages/quiz-selection.js";
-//import Leaderboard from "./pages/leaderboard.js";
+import Quizzes from "./pages/quiz-selection.js";
+import Leaderboard from "./pages/leaderboard.js";
+import Quiz from "./pages/quiz.js";
+import ProfileSettings from"./pages/profile-settings.js";
+
+let uri;
+
+if (process.env.NODE_ENV === 'development'){
+  uri= "http://localhost:3001/graphql";
+} else {
+  uri= "/graphql";
+}
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -64,9 +74,12 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                {/* 
+
+                
                 <Route path="/quizzes" element={<Quizzes />} />
-              <Route path="/leaderboard" element={<Leaderboard />} /> */}
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/quiz" element={<Quiz/>} />
+                <Route path="/profilesettings" element={<ProfileSettings/>} />
                 {/* Define a route that will take in variable data */}
                 {/* <Route 
                 path="/profiles/:profileId" 

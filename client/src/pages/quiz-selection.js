@@ -3,7 +3,7 @@ import { useState } from 'react';
 const Quizzes = () => {
 
     return (
-        <div>
+        <div className="feev__home">
             <h2>Pick a Category</h2>
             <div className='trivia-card-holder'>
                 <h3 className='group-title'>Human Civilization</h3>
@@ -29,9 +29,9 @@ const Quizzes = () => {
                 </div>
                 <h3 className='group-title'>Misc.</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value=''>Sports</div>
-                    <div className='trivia-choice-card' value=''>Mythology</div>
-                    <div className='trivia-choice-card' value=''>Vehicles</div>
+                    <div className='trivia-choice-card' value='21'>Sports</div>
+                    <div className='trivia-choice-card' value='20'>Mythology</div>
+                    <div className='trivia-choice-card' value='28'>Vehicles</div>
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const Home = () => {
+const  ProfileSettings= () => {
     return (
         <div className="feev__home">
             
         </div>
     );
 };
-export default Home;
+export default ProfileSettings;
