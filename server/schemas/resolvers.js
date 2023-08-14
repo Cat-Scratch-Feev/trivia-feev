@@ -50,31 +50,41 @@ const resolvers = {
     },
 
     // Update Score
-    updateScore: async (parent, { userId, score, quizScore }) => {
-      if (userId) {
+    updateScore: async (parent, { userId, score, quizScore }, context) => {
+      if (context.user) {
         try {
+          if (context.user._id.toString() !== userId) {
+            throw new AuthenticationError(
+              "You are not authorized to update this score."
+            );
+          }
+
           const user = await User.findOneAndUpdate(
             { _id: userId },
-            // This should increment by the score passed in
             { $inc: { score: quizScore } },
             { new: true }
           );
+
           return user;
         } catch (err) {
-          throw new AuthenticationError("Couldn't update score");
+          throw new ApolloError("Couldn't update score", "SCORE_UPDATE_ERROR");
         }
       } else {
         throw new AuthenticationError("Authentication required.");
       }
     },
 
-    // Update username, email, and password
     updateUser: async (parent, { username, email, password }, context) => {
       if (context.user) {
-        // Create an object with the fields to update
+        if (context.user._id.toString() !== context.user._id.toString()) {
+          throw new AuthenticationError(
+            "You are not authorized to update this user."
+          );
+        }
+        // Create object with updated fields
         const updatedFields = {};
 
-        // If any of the following fields exist, add them to the updatedFields object
+        // Check which fields are being updated and add to object
         if (username) {
           updatedFields.username = username;
         }
@@ -85,12 +95,13 @@ const resolvers = {
           updatedFields.password = await bcrypt.hash(password, 10);
         }
 
-        // Update user
-        return User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $set: updatedFields },
           { new: true }
         );
+
+        return updatedUser;
       } else {
         throw new AuthenticationError("Authentication required.");
       }
