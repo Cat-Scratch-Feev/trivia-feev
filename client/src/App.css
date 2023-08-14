@@ -290,8 +290,67 @@ header{
   background-color: white;
 }
 /* Quiz Direction Styling */
+.quiz__wrap{
+  margin:3rem;
+}
 /* Quiz Styling*/
+.quiz__category{
+  background-color: var(--main-dark-blue);
+  width:25rem;
+  height:5rem;
+  border-radius: 75px;
+  color:white;
+  margin:auto;
+  font-weight: bolder;
+  font-size:2rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Quiz End Page Styling*/
+.quiz__wrap--end{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quiz__score-card{
+  border-radius: 75px;
+  width:100%;
+  height:7rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1rem;
+}
+.quiz__score-card--blue{
+  background-color: var(--main-lightest-blue);
+}
+.quiz__score-card--pink{
+  background-color: var(--main-salmon);
+}
+.quiz__card--score{
+  background-color: white;
+  width: 10rem;
+  height:4rem;
+  border-radius: 75px;
+  display:flex;
+  flex-flow:row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.quiz-end__score--icon, .score__text{
+  font-size: 2rem;
+  line-height:0;
+  margin:0 0.5rem;
+}
+.quiz-end__score--icon{
+  color:var(--main-yellow);
+}
+.score__message{
+  font-size:2rem;
+  font-weight: bolder;
+}
 /* Footer styling*/
 .footer__wrap{
   width:50%;

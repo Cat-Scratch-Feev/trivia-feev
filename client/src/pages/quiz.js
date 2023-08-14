@@ -152,10 +152,23 @@ const Quiz = ({quizState, setQuizState}) => {
                 <></>
             )}
             {quizState === 'end' && questions.length > 0 && currentQuestionData ?  (
-                <div className="quiz__wrap">
+                <div className="quiz__wrap quiz__wrap--end">
                     <h2 className="quiz__category">{currentQuestionData.category}</h2> 
-                    <p>congrats! you scored: <i class="fa-solid fa-coins"></i> {score}</p>
-                    <p>your new total score: <i class="fa-solid fa-coins"></i> {score}</p>
+                    <div className="quiz__score-card quiz__score-card--blue">
+                        <p className="score__message">congrats! you scored: </p>
+                        <div className="quiz__card--score">
+                            <i className="quiz-end__score--icon fa-solid fa-coins"></i> 
+                            <p className="score__text">{score}</p>
+                        </div>
+                        </div>
+                    <div className="quiz__score-card quiz__score-card--pink">
+                        <p className="score__message">your new total score: </p>
+                        <div className="quiz__card--score">
+                            <i className=" quiz-end__score--icon fa-solid fa-coins"></i> 
+                            <p className="score__text">{score}</p>
+                        </div>
+                        </div>
+                    <button>save</button>
                 </div>
             ) : (
                 <></>
