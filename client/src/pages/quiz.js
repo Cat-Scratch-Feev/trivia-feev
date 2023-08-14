@@ -112,48 +112,60 @@ const Quiz = ({quizState, setQuizState}) => {
     return (
         <div className="feev__home">
             {quizState === 'start' && questions.length > 0 && currentQuestionData ? (
-                <div className="quiz__wrap">
+                <div className="quiz__wrap quiz__wrap--start">
                     <section className="directions__header">
-                        <h2>{currentQuestionData.category}</h2>
+                        <h2 className="quiz__category quiz__category--start">{currentQuestionData.category}</h2>
                         <div className="timer__block">
-                            <i class="fa-solid fa-stopwatch"></i>
-                            <p>{timer} seconds</p>
+                            <i className="quiz__timer fa-solid fa-stopwatch"></i>
+                            <p className="quiz__timer--text">{timer} s</p>
                         </div>
                         
                     </section>
-                    <h3>you have chosen the {currentQuestionData.category} category!</h3>
-                    <p>you will have 10 seconds per question, with a 5 second penalty for incorrect answers.</p>
-                    <p>your quiz will begin when you press start!</p>
-                    <button onClick={handleStartQuiz}>start</button>
+                    <section className="quiz__directions--blurb">
+                        <h3>you have chosen the {currentQuestionData.category} category!</h3>
+                        <p>you will have <span className="quiz__directions--bold">10</span> seconds per question, with a <span className="quiz__directions--bold">5</span> second penalty for incorrect answers.</p>
+                        <p>your quiz will begin when you press start!</p>
+
+                        <button className="quiz__start-button" onClick={handleStartQuiz}>start</button>
+                    </section>
                 </div>
                 
             ) : (
                 <></>
             )}
             {quizState === 'quiz' && questions.length > 0 && currentQuestionData ?  (
-                <div className="quiz__wrap">
-                    <h2>{currentQuestionData.category}</h2>
-                    <p>{decodedCurrentQuestion.question}</p>
+                <div className="quiz__wrap quiz__wrap--quiz">
+                    <h2 className="quiz__category quiz__category--end">{currentQuestionData.category}</h2>
+                    <h3 className="quiz__question">{decodedCurrentQuestion.question}</h3>
                     <div className="option-holder">
                         {shuffledAnswers.map((option, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleOptionClick(option)}
-                                className="option"
+                                className={`option color-${index % 4}`}
                             >
                                 {option}
                             </button>
                         ))}
                     </div>
-                    <p>Time remaining: {timer} s</p>
-                    <p>Score: {score}</p>
+                    
+                    <section className="quiz__timer-score--wrap">
+                        <div className="timer__block">
+                                <i className="quiz__timer fa-solid fa-stopwatch"></i>
+                                <p className="quiz__timer--text">{timer} s</p>
+                        </div>
+                        <div className="quiz__card--score">
+                                <i className=" quiz-end__score--icon fa-solid fa-coins"></i> 
+                                <p className="score__text">{score}</p>
+                        </div>
+                    </section>
                 </div>
             ) : (
                 <></>
             )}
             {quizState === 'end' && questions.length > 0 && currentQuestionData ?  (
                 <div className="quiz__wrap quiz__wrap--end">
-                    <h2 className="quiz__category">{currentQuestionData.category}</h2> 
+                    <h2 className="quiz__category quiz__category--end">{currentQuestionData.category}</h2> 
                     <div className="quiz__score-card quiz__score-card--blue">
                         <p className="score__message">congrats! you scored: </p>
                         <div className="quiz__card--score">
@@ -168,7 +180,7 @@ const Quiz = ({quizState, setQuizState}) => {
                             <p className="score__text">{score}</p>
                         </div>
                         </div>
-                    <button>save</button>
+                    <button className="quiz__score--save">save</button>
                 </div>
             ) : (
                 <></>
