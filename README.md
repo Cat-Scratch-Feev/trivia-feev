@@ -1,4 +1,4 @@
-## feev.io trivia app
+# feev.io trivia app
 
 ## Table of Contents 
 ---
@@ -34,7 +34,7 @@ Put your knowledge to the test and aim for the high score - because what else is
 ---
 - HTML, CSS, JavaScript
 - React, create-react-app
-- Node, Express, MongoDB, Mongoose, GrapgQL, Apollo
+- Node, Express, MongoDB, Mongoose, GraphQL, Apollo
 - [Bootstrap](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
 - [Open Trivia Database](https://opentdb.com/api_config.php)
