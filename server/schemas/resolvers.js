@@ -50,22 +50,16 @@ const resolvers = {
     },
 
     // Update Score
-    updateScore: async (parent, { username, quizScore }, context) => {
+    updateScore: async (parent, { quizScore }, context) => {
       if (context.user) {
         try {
-          if (context.user.username !== username) {
-            throw new AuthenticationError(
-              "You are not authorized to update this score."
-            );
-          }
-
-          const user = await User.findOneAndUpdate(
-            { username: username },
+          const updatedUser = await User.findOneAndUpdate(
+            { username: context.user.username },
             { $inc: { score: quizScore } },
             { new: true }
           );
 
-          return user;
+          return updatedUser;
         } catch (err) {
           throw new ApolloError("Couldn't update score", "SCORE_UPDATE_ERROR");
         }
@@ -74,34 +68,39 @@ const resolvers = {
       }
     },
 
-    updateUser: async (parent, { username, email, password }, context) => {
+    updateUser: async (parent, { email, username, password }, context) => {
       if (context.user) {
-        if (context.user._id.toString() !== username()) {
-          throw new AuthenticationError(
-            "You are not authorized to update this user."
+        try {
+          if (context.user._id.toString() !== context.user._id) {
+            throw new AuthenticationError(
+              "You are not authorized to update this user."
+            );
+          }
+
+          // Create object with updated fields
+          const updatedFields = {};
+
+          // Check which fields are being updated and add to object
+          if (email) {
+            updatedFields.email = email;
+          }
+          if (username) {
+            updatedFields.username = username;
+          }
+          if (password) {
+            updatedFields.password = await bcrypt.hash(password, 10);
+          }
+
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $set: updatedFields },
+            { new: true }
           );
-        }
-        // Create object with updated fields
-        const updatedFields = {};
 
-        // Check which fields are being updated and add to object
-        if (username) {
-          updatedFields.username = username;
+          return updatedUser;
+        } catch (err) {
+          throw new ApolloError("Couldn't update user", "USER_UPDATE_ERROR");
         }
-        if (email) {
-          updatedFields.email = email;
-        }
-        if (password) {
-          updatedFields.password = await bcrypt.hash(password, 10);
-        }
-
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $set: updatedFields },
-          { new: true }
-        );
-
-        return updatedUser;
       } else {
         throw new AuthenticationError("Authentication required.");
       }
