@@ -13,7 +13,7 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
-    // Get a single user by _id
+
     me: async (parent, args, context) => {
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
@@ -50,17 +50,17 @@ const resolvers = {
     },
 
     // Update Score
-    updateScore: async (parent, { userId, score, quizScore }, context) => {
+    updateScore: async (parent, { username, quizScore }, context) => {
       if (context.user) {
         try {
-          if (context.user._id.toString() !== userId) {
+          if (context.user.username !== username) {
             throw new AuthenticationError(
               "You are not authorized to update this score."
             );
           }
 
           const user = await User.findOneAndUpdate(
-            { _id: userId },
+            { username: username },
             { $inc: { score: quizScore } },
             { new: true }
           );
