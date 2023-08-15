@@ -50,13 +50,13 @@ const resolvers = {
     },
 
     // Update Score
-    updateScore: async (parent, { quizScore }, context) => {
+    updateScore: async (parent, { score }, context) => {
       if (context.user) {
         try {
           console.log(context.user);
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $inc: { score: quizScore } },
+            { $inc: { score: score } },
             { new: true }
           );
 
