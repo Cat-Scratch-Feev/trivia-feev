@@ -39,8 +39,8 @@ export const UPDATE_USER_MUTATION = gql`
 
 // Update score mutation
 export const UPDATE_SCORE_MUTATION = gql`
-  mutation UpdateScore($userId: ID!, $score: Int!, $quizScore: Int!) {
-    updateScore(userId: $userId, score: $score, quizScore: $quizScore) {
+  mutation UpdateScore($quizScore: Int!) {
+    updateScore(quizScore: $quizScore) {
       _id
       username
       email
