@@ -482,6 +482,92 @@ header{
 .footer__small{
   font-size:1rem;
 }
+
+/* leaderboard styling currently on bottom to not effect line numbers for conflicts  Move into correct positioning once it is finished */
+.feev__leaderboard-page-wrap{
+  height:100%;
+  width:100%;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.feev__leaderboard-wrap{
+  margin:3rem;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+.feev__leaderboard-card{
+  border-radius: 75px;
+  width:100%;
+  height:30rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1rem;
+  background-color: var(--main-lightest-blue);
+}
+.feev__leaderboard-message{
+  font-size:2rem;
+  font-weight: bolder;
+  padding-bottom: 25rem;
+  margin:0 1rem;
+}
+
+/* Moe css */
+/* Home/Dashboard CSS */
+.welcome__dash--wrap{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome-dash__title{
+  font-size: 2rem;
+  font-weight: bolder;
+  margin:2rem;
+}
+.greet-bg{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-lightest-blue);
+  border-radius: 40px;
+  width: 80%;
+  padding: 20px 40px;
+  /* margin: 10px 10px; */
+  
+}
+.user-greeting{
+  border-color: black;
+  border-radius: 40px;
+  background-color: white;
+  color: black;
+  font-size: large;
+  font-weight: bolder;
+  margin: 20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.welcome__dash--score, .user-greeting{
+  width: 15rem;
+  height:5rem;
+}
+.welcome__recc--wrap{
+  margin:2rem;
+}
+.trivia__recc--title{
+  font-size:1.5rem;
+  font-weight:bolder;
+}
+.trivia__recc--subtitle{
+  font-size:1rem;
+}
 /* Media Queries*/
 @media (max-width: 1000px) {
   .feev__landing-main__blurb{
@@ -606,79 +692,12 @@ header{
   .option{
     width:100%;
   }
-}
-
-/* leaderboard styling currently on bottom to not effect line numbers for conflicts  Move into correct positioning once it is finished */
-.feev__leaderboard-page-wrap{
-  height:100%;
-  width:100%;
-  
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.feev__leaderboard-wrap{
-  margin:3rem;
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items:center;
-}
-.feev__leaderboard-card{
-  border-radius: 75px;
-  width:100%;
-  height:30rem;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin:1rem;
-  background-color: var(--main-lightest-blue);
-}
-.feev__leaderboard-message{
-  font-size:2rem;
-  font-weight: bolder;
-  padding-bottom: 25rem;
-  margin:0 1rem;
-}
-
-/* Moe css */
-/* home.js css */
-.feev-home{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.greet-bg{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--main-lightest-blue);
-  border-radius: 40px;
-  width: 65vw;
-  padding: 20px 40px;
-  /* margin: 10px 10px; */
-  
-}
-.user-greeting{
-  padding: 25px 50px;
-  border-color: black;
-  border-radius: 40px;
-  background-color: white;
-  color: black;
-  font-size: large;
-  font-weight: bold;
-  margin: 20px;
-  padding: 40px 80px;
-}
-.score{
-  /* margin: 10px 10px; */
-  padding: 25px 50px;
-  border-color: black;
-  border-radius: 40px;
-  background-color: white;
-  color: black;
-  font-size: large;
-  font-weight: bold;
+  .welcome__dash--score, .user-greeting{
+    width: 15rem;
+    height:5rem;
+    margin:0.5rem 0;
+  }
+  .welcome-dash__title{
+    text-align: center;
+  }
 }
