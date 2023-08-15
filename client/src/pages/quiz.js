@@ -1,8 +1,11 @@
+//Import requirements
 import React, { useState, useEffect } from "react";
 import he from "he"; //Import 'he' library to decode api response
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
-
+import { useMutation } from "@apollo/client";
+import { UPDATE_SCORE_MUTATION } from "../utils/mutations";
+import { useNavigate } from 'react-router-dom';
 const Quiz = ({ quizState, setQuizState }) => {
   // Setting default state
   const [selectCat, setSelectCat] = useState(() => {
@@ -21,6 +24,8 @@ const Quiz = ({ quizState, setQuizState }) => {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   const userCurrentScore = userData.score || 0;
+  const navigate= useNavigate();
+  const [updateScoreMutation] = useMutation(UPDATE_SCORE_MUTATION);
   // Our api url
   let url = `https://opentdb.com/api.php?amount=10&category=${selectCat}&type=multiple`;
 
@@ -114,6 +119,20 @@ const Quiz = ({ quizState, setQuizState }) => {
     }
   }, [currentQuestionData]);
 
+ 
+    const handleQuizSave= async () => {
+      try {
+        const newDatabaseScore = score;
+
+        const { data } = await updateScoreMutation({
+          variables: { score: newDatabaseScore }, // Update the database with the new score
+        });
+        setQuizState('start');
+        navigate('/');
+      } catch (error) {
+        console.error('Error updating user score', error);
+      }
+    }
   return (
     <div className="feev__home">
       {quizState === "start" && questions.length > 0 && currentQuestionData ? (
@@ -198,7 +217,7 @@ const Quiz = ({ quizState, setQuizState }) => {
               <p className="score__text">{userCurrentScore + score}</p>
             </div>
           </div>
-          <button className="quiz__score--save">save</button>
+          <button className="quiz__score--save" onClick={() => handleQuizSave()}>save</button>
         </div>
       ) : (
         <></>
