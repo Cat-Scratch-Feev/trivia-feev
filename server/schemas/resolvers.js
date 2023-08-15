@@ -53,8 +53,9 @@ const resolvers = {
     updateScore: async (parent, { quizScore }, context) => {
       if (context.user) {
         try {
+          console.log(context.user);
           const updatedUser = await User.findOneAndUpdate(
-            { username: context.user.username },
+            { _id: context.user._id },
             { $inc: { score: quizScore } },
             { new: true }
           );
@@ -71,12 +72,6 @@ const resolvers = {
     updateUser: async (parent, { email, username, password }, context) => {
       if (context.user) {
         try {
-          if (context.user._id.toString() !== context.user._id) {
-            throw new AuthenticationError(
-              "You are not authorized to update this user."
-            );
-          }
-
           // Create object with updated fields
           const updatedFields = {};
 
