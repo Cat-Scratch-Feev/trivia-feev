@@ -79,6 +79,22 @@ const Home = ({quizState, setQuizState, handleCategoryChoiceClick}) => {
         value:"28",
       },
     ];
+    // Function to shuffle options
+    const shuffleArray = (array) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    };
+    //Function to add the correct color class on when rendering the randomized trivia recommendations
+    function getCardColor(index) {
+      //Create colors array that correspond to styling classes
+      const colorPalette = ['blue', 'pink', 'yellow'];
+      const colorIndex = index % colorPalette.length;
+      return colorPalette[colorIndex];
+    }
+    const randomCategories= shuffleArray(triviaCategories);
 
     return (
         <div className="feev__home">
@@ -103,18 +119,14 @@ const Home = ({quizState, setQuizState, handleCategoryChoiceClick}) => {
                 <h2 className="trivia__recc--title">trivia recommendations</h2>
                 <h3 className="trivia__recc--subtitle">get started with some trivia!</h3>
                 <div className='trivia-group'>
-                    <div className='trivia-choice-card' value='24'  >
-                        <span className="trivia__card--blue"></span>
-                        <button onClick={() => handleCategoryChoiceClick('24')}>Politics</button>
+                  {randomCategories.slice(0, 3).map((category, index) => (
+                    <div className={`trivia-choice-card ${category.value}`} key={index}>
+                      <span className={`trivia__card--${getCardColor(index)}`}></span>
+                      <button onClick={() => handleCategoryChoiceClick(category.value)}>
+                        {category.name}
+                      </button>
                     </div>
-                    <div className='trivia-choice-card' value='25'>
-                        <span className="trivia__card--pink"></span>
-                        <button onClick={() => handleCategoryChoiceClick('25')}>Art</button>
-                    </div>
-                    <div className='trivia-choice-card' value='22'>
-                        <span className="trivia__card--yellow"></span>
-                        <button onClick={() => handleCategoryChoiceClick('22')}>Geography</button>
-                    </div>
+                  ))}
                 </div>
               </section>
             </div>
