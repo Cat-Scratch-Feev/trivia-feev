@@ -87,7 +87,7 @@ header{
 .sideNav__wrap{
   width:20%;
   border-right: solid 0.1rem var(--main-dark-blue);
-  height:100%;
+  /* height:100%; */
   display:flex;
   justify-content:center;
  
@@ -109,9 +109,11 @@ header{
 /* Page wrap styling*/
 .feev__router-page--wrap{
   width:80%;
+  display:flex;
+  flex-direction: column;
 }
 .feev__home{
-  height:80%;
+  height:100%;
 }
 .feev__landing-wrap, .feev__landing-page{
   width:100%;
@@ -240,6 +242,217 @@ header{
   font-weight: bolder;
   margin:1rem;
 }
+/* Quiz Category Selection Styling*/
+.feev__trivia-select--wrap{
+  margin:2rem;
+}
+.trivia__page-title{
+  font-size:2rem;
+  font-weight: bolder;
+}
+.group-title{
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.trivia-group{
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.trivia-choice-card{
+  flex-basis:28%;
+  height:12rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:center;
+  margin:1rem;
+}
+.trivia-choice-card > span {
+  height:9rem;
+  width:100%;
+  border-radius: 75px 75px 0 0;
+}
+.trivia__card--blue{
+  background-color: var(--main-lightest-blue);
+}
+.trivia__card--yellow{
+  background-color: var(--main-yellow);
+}
+.trivia__card--pink{
+  background-color: var(--main-salmon);
+}
+.trivia-choice-card > button {
+  width:100%;
+  height:3rem;
+  border-radius: 0 0  75px 75px;
+  border:none;
+  background-color: white;
+}
+/* Quiz Direction Styling */
+.quiz__wrap{
+  margin:3rem;
+}
+.directions__header{
+  display:flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.quiz__category--start{
+  width: 60%;
+  height:4rem;
+}
+.quiz__category{
+  background-color: var(--main-dark-blue);
+  border-radius: 75px;
+  color:white;
+  font-weight: bolder;
+  font-size:2rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.directions__header, .quiz__directions--blurb{
+  margin:1rem;
+}
+.timer__block{
+  display:flex;
+  flex-flow:wrap;
+  align-items: center;
+}
+.quiz__timer--text{
+  font-size:2.5rem;
+  margin:0 1rem;
+}
+.quiz__timer{
+  font-size:2.5rem;
+  color:var(--main-salmon);
+}
+.quiz__directions--blurb{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size:2rem;
+  text-align: center;
+}
+.quiz__directions--bold{
+  font-weight: bolder;
+}
+.quiz__start-button{
+  width:50%;
+  height:4rem;
+  background-color: var(--main-salmon);
+  margin:1rem;
+  border-radius: 75px;
+  border:none;
+  color:white;
+  font-weight: bolder;
+}
+/* Quiz Styling*/
+.quiz__timer-score--wrap{
+  display:flex;
+  justify-content: center;
+}
+.quiz__wrap--quiz{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.option-holder{
+  display:flex;
+  flex-flow: row wrap;
+  width:100%;
+}
+.option {
+  margin:0.5rem;
+  width: calc(50% - 1rem); /* Subtract margin from the width */
+  box-sizing: border-box;
+  height:4rem;
+  border-radius: 75px;
+  border:none;
+  background-color: var(--main-salmon);
+  font-weight: bolder;
+  font-size:1rem;
+}
+.quiz__question{
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.color-0{
+  background-color: var(--main-salmon);
+}
+.color-1{
+  background-color: var(--main-yellow);
+}
+.color-2{
+  background-color: var(--main-lightest-blue);
+}
+.color-3{
+  background-color: var(--main-dark-blue);
+}
+/* Quiz End Page Styling*/
+.quiz__category--end{
+  width:30rem;
+  height:5rem;
+  margin:auto;
+}
+.quiz__wrap--end{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quiz__score-card{
+  border-radius: 75px;
+  width:100%;
+  height:7rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1rem;
+}
+.quiz__score-card--blue{
+  background-color: var(--main-lightest-blue);
+}
+.quiz__score-card--pink{
+  background-color: var(--main-salmon);
+}
+.quiz__card--score{
+  background-color: white;
+  width: 10rem;
+  height:4rem;
+  border-radius: 75px;
+  display:flex;
+  flex-flow:row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.quiz-end__score--icon, .score__text{
+  font-size: 2rem;
+  line-height:0;
+  margin:0 0.5rem;
+}
+.quiz-end__score--icon{
+  color:var(--main-yellow);
+}
+.score__message{
+  font-size:2rem;
+  font-weight: bolder;
+  margin:0 1rem;
+}
+.quiz__score--save{
+  width:50%;
+  height:3rem;
+  border-radius: 75px;
+  background-color: var(--main-dark-blue);
+  border:none;
+  color:white;
+  font-weight: bolder;
+  font-size:1.5rem;
+}
 /* Footer styling*/
 .footer__wrap{
   width:50%;
@@ -298,8 +511,9 @@ header{
     justify-content:center;
     margin:0;
   }
+  /* TO-DO: Height here causing problems with content on trivia page, but if missing when content is low will cause the footer to fix to the top.. Work out later / Only on mobile*/
   .feev__router-page--wrap{
-    height:80%;
+    /* height:80%; */
     width:100%;
   }
   .login-signup__wrap{
@@ -307,13 +521,15 @@ header{
     /* width:100%;
     height:75%; */
   }
+  .trivia-choice-card{
+    flex-basis:45%;
+  }
 }
+
 @media (max-width: 600px) {
   .header__name{
     margin:1.5rem;
   }
-}
-@media (max-width: 600px) {
   .mobile__hidden{
     display:none;
   }
@@ -345,9 +561,9 @@ header{
   .sideNav__list{
     display:block;
   }
-  .feev__router-page--wrap{
+ /*  .feev__router-page--wrap{
     height:100%;
-  }
+  } */
   .login-signup__form{
     margin:0.5rem;
     width:100%;
@@ -359,7 +575,74 @@ header{
   .feev__landing-main-wrap{
     margin:1rem;
   }
+
+ .fa-solid .fa-coins{
+  color: yellow;
+  margin: 5px;
+ }
+
+  .trivia-choice-card{
+    flex-basis:80%;
+  }
+  .quiz__wrap{
+    margin:1rem;
+  }
+  .quiz__category{
+    width:100%;
+  }
+  .score__message{
+    font-size:1rem;
+    
+  }
+  .quiz__card--score {
+    width:7rem;
+  }
+  .quiz__score--save{
+    width:70%;
+  }
+  .quiz__category--start, .timer__block{
+    margin:0.5rem;
+  }
+  .option{
+    width:100%;
+  }
 }
+
+/* leaderboard styling currently on bottom to not effect line numbers for conflicts  Move into correct positioning once it is finished */
+.feev__leaderboard-page-wrap{
+  height:100%;
+  width:100%;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.feev__leaderboard-wrap{
+  margin:3rem;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+.feev__leaderboard-card{
+  border-radius: 75px;
+  width:100%;
+  height:30rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1rem;
+  background-color: var(--main-lightest-blue);
+}
+.feev__leaderboard-message{
+  font-size:2rem;
+  font-weight: bolder;
+  padding-bottom: 25rem;
+  margin:0 1rem;
+}
+
 /* Moe css */
 /* home.js css */
 .feev-home{
@@ -399,10 +682,3 @@ header{
   font-size: large;
   font-weight: bold;
 }
-
-
-
- .fa-solid .fa-coins{
-  color: yellow;
-  margin: 5px;
- }

@@ -1,6 +1,7 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User } = require("../models");
+const { signToken } = require("../utils/auth");
+const { bcrypt } = require("bcrypt");
 
 const resolvers = {
   Query: {
@@ -12,7 +13,14 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
-  }, 
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+  },
   Mutation: {
     // Add a user
     addUser: async (parent, { username, email, password }) => {
@@ -23,28 +31,75 @@ const resolvers = {
       // Return token and user
       return { token, user };
     },
+
     // Login a user
     login: async (parent, { email, password }) => {
-      // Look up by email
       const user = await User.findOne({ email });
       // If no user found
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
-
       // Check if password is correct
       const correctPw = await user.isCorrectPassword(password);
-      // If the password is wrong
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
-
       // Create a new token
       const token = signToken(user);
-      // Return token and user
       return { token, user };
     },
-    // TODO: Add score
+
+    // Update Score
+    updateScore: async (parent, { quizScore }, context) => {
+      if (context.user) {
+        try {
+          console.log(context.user);
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $inc: { score: quizScore } },
+            { new: true }
+          );
+
+          return updatedUser;
+        } catch (err) {
+          throw new ApolloError("Couldn't update score", "SCORE_UPDATE_ERROR");
+        }
+      } else {
+        throw new AuthenticationError("Authentication required.");
+      }
+    },
+
+    updateUser: async (parent, { email, username, password }, context) => {
+      if (context.user) {
+        try {
+          // Create object with updated fields
+          const updatedFields = {};
+
+          // Check which fields are being updated and add to object
+          if (email) {
+            updatedFields.email = email;
+          }
+          if (username) {
+            updatedFields.username = username;
+          }
+          if (password) {
+            updatedFields.password = await bcrypt.hash(password, 10);
+          }
+
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $set: updatedFields },
+            { new: true }
+          );
+
+          return updatedUser;
+        } catch (err) {
+          throw new ApolloError("Couldn't update user", "USER_UPDATE_ERROR");
+        }
+      } else {
+        throw new AuthenticationError("Authentication required.");
+      }
+    },
   },
 };
 

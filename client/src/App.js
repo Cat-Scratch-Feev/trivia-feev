@@ -1,5 +1,5 @@
-//import logo from './logo.svg';
 import "./reset.css";
+import React, { useState } from "react";
 import "./App.css";
 import {
   ApolloClient,
@@ -23,13 +23,23 @@ import Signup from "./pages/signup.js";
 import Quizzes from "./pages/quiz-selection.js";
 import Leaderboard from "./pages/leaderboard.js";
 import Quiz from "./pages/quiz.js";
+import ProfileSettings from "./pages/profile-settings.js";
+
+let uri;
+
+if (process.env.NODE_ENV === "development") {
+  uri = "http://localhost:3001/graphql";
+} else {
+  uri = "/graphql";
+}
+
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri,
 });
 
 const authLink = setContext((_, { headers }) => {
   // Get the authentication token from local storage if it exists
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem("auth_token");
   // Return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -46,50 +56,65 @@ const client = new ApolloClient({
 
 function App() {
   const isLoggedIn = Auth.loggedIn();
+  const [quizState, setQuizState] = useState("start");
   return (
     <ApolloProvider client={client}>
       <Router>
-      <div className="App">
-        <Header />
-        {isLoggedIn ? (
+        <div className="App">
+          <Header />
+          {isLoggedIn ? (
+            <div className="feev__page--wrap">
+              <SideNav />
+              <div className="feev__router-page--wrap">
+                {/* Wrap Route elements in a Routes component */}
+                <Routes>
+                  {/* Define routes using the Route component to render different page components at different paths */}
 
-        <div className="feev__page--wrap">
-          <SideNav />
-            <div className="feev__router-page--wrap">
-              {/* Wrap Route elements in a Routes component */}
-              <Routes>
-                {/* Define routes using the Route component to render different page components at different paths */}
+                  {/* Define a default route that will render the Home component */}
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
 
-                {/* Define a default route that will render the Home component */}
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-
-                
-                <Route path="/quizzes" element={<Quizzes />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/quiz" element={<Quiz/>} />
-                {/* Define a route that will take in variable data */}
-                {/* <Route 
+                  <Route
+                    path="/quizzes"
+                    element={
+                      <Quizzes
+                        quizState={quizState}
+                        setQuizState={setQuizState}
+                      />
+                    }
+                  />
+                  <Route path="/leaderboard" element={<Leaderboard />} />
+                  <Route
+                    path="/quiz"
+                    element={
+                      <Quiz quizState={quizState} setQuizState={setQuizState} />
+                    }
+                  />
+                  <Route
+                    path="/profilesettings"
+                    element={<ProfileSettings />}
+                  />
+                  {/* Define a route that will take in variable data */}
+                  {/* <Route 
                 path="/profiles/:profileId" 
                 element={<Profile />} 
               /> */}
-              </Routes>
-              <Footer />
+                </Routes>
+                <Footer />
+              </div>
             </div>
-          
-        </div>
-        ) : (
-          <div className="feev__landing-wrap">
-            <Routes>
+          ) : (
+            <div className="feev__landing-wrap">
+              <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-            </Routes>
-            <Footer />
-          </div>
-        )}
-      </div>
+              </Routes>
+              <Footer />
+            </div>
+          )}
+        </div>
       </Router>
     </ApolloProvider>
   );
