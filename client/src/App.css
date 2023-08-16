@@ -1,7 +1,7 @@
 /*Root variables*/
 :root {
   --main-salmon:#F4AEA0;
-  --main-dark-blue:#5C61B3;
+  --main-dark-blue:#4A4FA6;
   --main-light-blue:#777CD3;
   --main-lightest-blue:#C9C5EF;
   --main-yellow:#F3C771;
@@ -23,8 +23,6 @@ body{
 }
 /* Header styling*/
 .header__wrap {
-  
-  /* margin:2rem; */
   border-bottom: solid 0.1rem var(--main-dark-blue);
 }
 header{
@@ -75,6 +73,7 @@ header{
 }
 .login__nav--button{
   border:none;
+  background-color: transparent;
 }
 /* Page wrapping*/
 .feev__page--wrap{
@@ -200,7 +199,7 @@ header{
   flex-flow: column nowrap;
   align-items: center;
   padding:2rem 0;
-  margin:1rem 0;
+  margin:3rem 0;
 }
 .feev__landing-secondary-cards{
   display:flex;
@@ -391,7 +390,7 @@ header{
   background-color: var(--main-lightest-blue);
 }
 .color-3{
-  background-color: var(--main-dark-blue);
+  background-color: var(--bs-btn-active-bg);
 }
 /* Quiz End Page Styling*/
 .quiz__category--end{
@@ -635,6 +634,9 @@ header{
   .header__name{
     margin:0;
   }
+  .login__buttons--wrap{
+    margin:0.25rem;
+  }
   .dropdown{
     margin:0;
   }
@@ -647,9 +649,6 @@ header{
   .sideNav__list{
     display:block;
   }
- /*  .feev__router-page--wrap{
-    height:100%;
-  } */
   .login-signup__form{
     margin:0.5rem;
     width:100%;
@@ -686,7 +685,14 @@ header{
   .quiz__score--save{
     width:70%;
   }
-  .quiz__category--start, .timer__block{
+  .directions__header{
+    margin:1rem 0;
+  }
+  .quiz__category{
+    height:5rem;
+    text-align: center;
+  }
+  .timer__block{
     margin:0.5rem;
   }
   .option{
@@ -699,5 +705,11 @@ header{
   }
   .welcome-dash__title{
     text-align: center;
+  }
+  .quiz__card--score--end{
+    width:7rem;
+  }
+  .quiz-end__score--icon, .score__text{
+    font-size:1.25rem;
   }
 }

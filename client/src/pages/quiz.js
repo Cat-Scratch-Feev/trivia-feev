@@ -205,14 +205,14 @@ const Quiz = ({ quizState, setQuizState }) => {
           </h2>
           <div className="quiz__score-card quiz__score-card--blue">
             <p className="score__message">congrats! you scored: </p>
-            <div className="quiz__card--score">
+            <div className="quiz__card--score quiz__card--score--end">
               <i className="quiz-end__score--icon fa-solid fa-coins"></i>
               <p className="score__text">{score}</p>
             </div>
           </div>
           <div className="quiz__score-card quiz__score-card--pink">
             <p className="score__message">your new total score: </p>
-            <div className="quiz__card--score">
+            <div className="quiz__card--score quiz__card--score--end">
               <i className=" quiz-end__score--icon fa-solid fa-coins"></i>
               <p className="score__text">{userCurrentScore + score}</p>
             </div>
