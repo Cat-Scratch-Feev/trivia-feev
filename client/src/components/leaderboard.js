@@ -1,3 +1,4 @@
+//  Working together on 16-Aug to build a functioning leaderboard
 import React, { useEffect, useState } from 'react';
 
 const LeaderBoard = () => {
