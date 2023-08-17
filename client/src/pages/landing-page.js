@@ -30,12 +30,12 @@ const Landing = () => {
                     <div className="feev__landing--card">
                         <h3 className="feev__landing-card--title">quiz</h3>
                         <i className="feev__landing-card--icon feev__landing-card--watch fa-solid fa-stopwatch"></i>
-                        <p>quiz from any of our categories!</p>
+                        <p>play a quiz from any of our categories!</p>
                     </div>
                     <div className="feev__landing--card">
                         <h3 className="feev__landing-card--title">score!</h3>
                         <i className="feev__landing-card--icon feev__landing-card--trophy fa-solid fa-trophy"></i>
-                        <p>gain scores and compete, show off your trivia skills!</p>
+                        <p>gain feev-tokens by completing quizzes and rise up the leaderboard!</p>
                     </div>
                 </section>
             </div>
