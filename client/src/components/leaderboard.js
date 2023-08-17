@@ -18,7 +18,6 @@ const LeaderBoard = () => {
 
     return (
         <div>
-            <h2>feev<span className="header__name--color">.io</span>'s leaderboard</h2>
             <div className="feev__leaderboard-container">
                 {sortedUsers.slice(0,3).map((user, index) => (
                     <div key={user.id} className="user-entry">
