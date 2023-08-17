@@ -17,18 +17,22 @@ const LeaderBoard = () => {
     
 
     return (
-        <div>
+        <div className="feev__leaderboard--component">
+            {loading ? (
+            <>Loading scoreboard data..</>
+            ) : (
             <div className="feev__leaderboard-container">
                 {sortedUsers.slice(0,3).map((user, index) => (
-                    <div key={user.id} className="user-entry">
-                        <span className="username">{user.username}</span>
-                        <div className={`rank${index + 1}`}>
-                            <i className="fa-solid fa-coins"></i>
-                            <span className="score">{user.score}</span>
+                    <div key={user.username} className="user-entry">
+                        <span className="feev__leaderboard--username">{user.username}</span>
+                        <div className={`rank rank${index + 1}`}>
+                            <i className="highscore__icon fa-solid fa-coins"></i>
+                            <span className="highscore__score">{user.score}</span>
                         </div>
                     </div>
                 ))}
             </div>
+            )}
         </div>
     );
 };
