@@ -18,6 +18,9 @@ body{
   font-family: 'Poppins', sans-serif;
   line-height: 1.25;
 }
+.body-text__indent{
+  text-indent: 1rem;
+}
 .name__wrap {
   display:flex;
   line-height:1;
@@ -176,6 +179,11 @@ header{
   border-color:transparent;
   color:white;
 }
+/* Profile Settings*/
+.profile-settings__button{
+    width:8rem;
+  
+}
 /* Landing styling*/
 .feev__landing-main-wrap{
   display:flex;
@@ -300,8 +308,9 @@ header{
   justify-content: center;
 }
 .quiz__category--start{
-  width: 60%;
-  height:4rem;
+  width: 75%;
+  
+  margin: 0 2rem 0 0;
 }
 .quiz__category{
   background-color: var(--main-dark-blue);
@@ -309,9 +318,11 @@ header{
   color:white;
   font-weight: bolder;
   font-size:2rem;
+  height:6rem;
   display:flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .directions__header, .quiz__directions--blurb{
   margin:1rem;
@@ -396,7 +407,6 @@ header{
 /* Quiz End Page Styling*/
 .quiz__category--end{
   width:30rem;
-  height:5rem;
   margin:auto;
 }
 .quiz__wrap--end{
@@ -504,22 +514,67 @@ header{
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   border-radius: 75px;
   align-items: center;
   margin:1rem;
-  background-color: var(--main-light-blue);
   }
-.feev__leaderboard-message{
-  
-}
 .feev__leaderboard-display{
   width: 100%;
-  height: 7rem;
   display: flex;
-
 }
-
+.feev__leaderboard--component{
+  width:100%;
+}
+.feev__leaderboard-message{
+  font-size:2rem;
+  margin:2rem;
+  text-align: center;
+}
+.feev__leaderboard-container{
+  display:flex;
+}
+.user-entry{
+  margin:1rem;
+  width:100%;
+  align-self: flex-end;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.feev__leaderboard--username{
+  font-size:1.25rem;
+}
+.highscore__icon{
+  color:white;
+  font-size:2.5rem;
+  margin:1rem;
+}
+.highscore__score{
+  font-size:1.5rem;
+  font-weight: bolder;
+}
+.rank{
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  margin:1rem;
+  border-radius: 75px 75px 0 0;
+  align-items:center;
+}
+.rank1{
+  background-color: var(--main-salmon);
+  height:25rem;
+  
+}
+.rank2{
+  background-color: var(--main-lightest-blue);
+  height:20rem;
+}
+.rank3 {
+  background-color: var(--main-yellow);
+  height:10rem;
+}
 /* Moe css */
 /* Home/Dashboard CSS */
 .welcome__dash--wrap{
@@ -582,6 +637,10 @@ header{
   .feev__landing--title{
     justify-content: center;
     margin-top:1rem;
+  }
+  .quiz__category--start{
+    width:90%;
+    margin: 1rem 0;
   }
 }
 @media (max-width: 768px) {
@@ -691,10 +750,6 @@ header{
   .directions__header{
     margin:1rem 0;
   }
-  .quiz__category{
-    height:5rem;
-    text-align: center;
-  }
   .timer__block{
     margin:0.5rem;
   }
@@ -714,5 +769,20 @@ header{
   }
   .quiz-end__score--icon, .score__text{
     font-size:1.25rem;
+  }
+  .user-entry{
+    margin:0.5rem;
+  }
+  .quiz__category {
+    height:8rem;
+  }
+  
+}
+@media (max-width: 400px) {
+  .quiz__category{
+    height:9rem;
+  }
+  .quiz__wrap{
+    margin:0;
   }
 }
