@@ -1,4 +1,4 @@
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError, ApolloError } = require("apollo-server-express");
 const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 const { bcrypt } = require("bcrypt");
@@ -69,7 +69,7 @@ const resolvers = {
       }
     },
 
-    updateUser: async (parent, { email, username, password }, context) => {
+    updateUser: async (parent, { email, username }, context) => {
       if (context.user) {
         try {
           // Create object with updated fields
@@ -81,9 +81,6 @@ const resolvers = {
           }
           if (username) {
             updatedFields.username = username;
-          }
-          if (password) {
-            updatedFields.password = await bcrypt.hash(password, 10);
           }
 
           const updatedUser = await User.findOneAndUpdate(

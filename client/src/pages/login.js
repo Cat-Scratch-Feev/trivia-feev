@@ -21,7 +21,6 @@ const Login = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
@@ -81,7 +80,7 @@ const Login = () => {
             )}
           {error && (
               <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
+                Error logging in!
               </div>
             )}
           

@@ -14,17 +14,16 @@ class AuthService {
 
   // Check token expiration
   expiredToken(token) {
-    try{
+    try {
       const decodedToken = decode(token);
       if (decodedToken.exp < Date.now() / 1000) {
         //localStorage.removeItem("auth_token");
         this.logout();
         return true;
       } else return false;
-    } catch(err) {
+    } catch (err) {
       return false;
     }
-    
   }
 
   // Gets token from local storage
@@ -42,7 +41,6 @@ class AuthService {
   logout() {
     localStorage.removeItem("auth_token");
     window.location.assign("/");
-    window.location.reload();
   }
 }
 export default new AuthService();

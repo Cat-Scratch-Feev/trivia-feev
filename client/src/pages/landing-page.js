@@ -35,7 +35,7 @@ const Landing = () => {
                     <div className="feev__landing--card">
                         <h3 className="feev__landing-card--title">score!</h3>
                         <i className="feev__landing-card--icon feev__landing-card--trophy fa-solid fa-trophy"></i>
-                        <p>gain scores and compete, show off your trivia skillsthe leaderboard!</p>
+                        <p>gain feev-tokens by completing quizzes and rise up the leaderboard!</p>
                     </div>
                 </section>
             </div>

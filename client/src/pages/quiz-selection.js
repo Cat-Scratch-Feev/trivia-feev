@@ -1,8 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-
-const Quizzes = ({quizState, setQuizState, handleCategoryChoiceClick}) => {
-
+const Quizzes = ({quizState, setQuizState}) => {
+    const navigate= useNavigate();
+     //Handle user's category choice
+    const handleCategoryChoiceClick= (value) => {
+        //Save user's selected option to local storage for use on quiz page
+        localStorage.setItem('selectedCategory', value.toString());
+        //Set quiz state prior to routing to quiz page, ensure correct flow
+        setQuizState('start');
+        //Navigate user to quiz starting page on click
+        navigate('/quiz');
+    }
     return (
         <div className="feev__home">
             <div className="feev__trivia-select--wrap">

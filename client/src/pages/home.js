@@ -1,8 +1,19 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER_BY_ID } from '../utils/queries';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Home = ({quizState, setQuizState, handleCategoryChoiceClick}) => {
+const Home = ({quizState, setQuizState}) => {
+  const navigate= useNavigate();
+   //Handle user's category choice
+   const handleCategoryChoiceClick= (value) => {
+    //Save user's selected option to local storage for use on quiz page
+    localStorage.setItem('selectedCategory', value.toString());
+    //Set quiz state prior to routing to quiz page, ensure correct flow
+    setQuizState('start');
+    //Navigate user to quiz starting page on click
+    navigate('/quiz');
+}
   //Query for user profile information
     const { profileId } = useParams();
     const { loading, data } = useQuery(
