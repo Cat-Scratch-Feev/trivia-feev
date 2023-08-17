@@ -168,7 +168,7 @@ const Quiz = ({ quizState, setQuizState }) => {
       )}
       {quizState === "quiz" && questions.length > 0 && currentQuestionData ? (
         <div className="quiz__wrap quiz__wrap--quiz">
-          <h2 className="quiz__category quiz__category--end">
+          <h2 className="quiz__category quiz__category--start">
             {currentQuestionData.category}
           </h2>
           <h3 className="quiz__question">{decodedCurrentQuestion.question}</h3>
