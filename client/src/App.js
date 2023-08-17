@@ -59,15 +59,6 @@ function App() {
   //Check if user is logged in, used in App to conditionally render.
   const isLoggedIn = Auth.loggedIn();
   const [quizState, setQuizState] = useState("start");
-  //Handle user's category choice, declared here as a prop for quiz selection and home's trivia recommendation.
-  const handleCategoryChoiceClick= (value) => {
-    //Save user's selected option to local storage for use on quiz page
-    localStorage.setItem('selectedCategory', value.toString());
-    //Set quiz state prior to routing to quiz page, ensure correct flow
-    setQuizState('start');
-    //Navigate user to quiz starting page on click
-    window.location.assign('/quiz');
-}
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -82,14 +73,13 @@ function App() {
                 <Routes>
                   {/* Define routes using the Route component to render different page components at different paths */}
                   {/* Define a default route that will render the Home component */}
-                  <Route path="/" element={<Home handleCategoryChoiceClick={handleCategoryChoiceClick} quizState={quizState} setQuizState={setQuizState}/>} />
+                  <Route path="/" element={<Home quizState={quizState} setQuizState={setQuizState}/>} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route
                     path="/quizzes"
                     element={
                       <Quizzes
-                        handleCategoryChoiceClick={handleCategoryChoiceClick}
                         quizState={quizState}
                         setQuizState={setQuizState}
                       />
