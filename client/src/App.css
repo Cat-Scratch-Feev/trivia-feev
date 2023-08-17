@@ -16,6 +16,7 @@ body > #root > div {
 body{
   background-color:var(--main-background);
   font-family: 'Poppins', sans-serif;
+  line-height: 1.25;
 }
 .name__wrap {
   display:flex;
