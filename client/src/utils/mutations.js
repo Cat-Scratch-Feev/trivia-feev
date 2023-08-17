@@ -28,8 +28,8 @@ export const LOGIN_USER = gql`
 
 // Update user mutation
 export const UPDATE_USER_MUTATION = gql`
-  mutation UpdateUser($username: String, $email: String, $password: String) {
-    updateUser(username: $username, email: $email, password: $password) {
+  mutation UpdateUser($username: String, $email: String) {
+    updateUser(username: $username, email: $email) {
       _id
       username
       email
