@@ -18,6 +18,9 @@ const LeaderBoard = () => {
 
     return (
         <div>
+            {loading ? (
+            <>test</>
+            ) : (
             <div className="feev__leaderboard-container">
                 {sortedUsers.slice(0,3).map((user, index) => (
                     <div key={user.id} className="user-entry">
@@ -29,6 +32,7 @@ const LeaderBoard = () => {
                     </div>
                 ))}
             </div>
+            )}
         </div>
     );
 };
