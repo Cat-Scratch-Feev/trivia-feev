@@ -501,21 +501,24 @@ header{
   align-items:center;
 }
 .feev__leaderboard-card{
-  border-radius: 75px;
-  width:100%;
-  height:30rem;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin:1rem;
-  background-color: var(--main-lightest-blue);
-}
+    flex: 1;
+    background-color: #b3d1ff;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    margin-right: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Align content in column layout */
+  };
 .feev__leaderboard-message{
   font-size:2rem;
   font-weight: bolder;
   padding-bottom: 25rem;
   margin:0 1rem;
+  justify-content: center;
 }
+
 
 /* Moe css */
 /* Home/Dashboard CSS */
