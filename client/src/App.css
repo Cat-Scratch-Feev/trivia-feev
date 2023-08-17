@@ -483,11 +483,10 @@ header{
   font-size:1rem;
 }
 
-/* leaderboard styling currently on bottom to not effect line numbers for conflicts  Move into correct positioning once it is finished */
+/* leaderboard styling */ 
 .feev__leaderboard-page-wrap{
   height:100%;
   width:100%;
-  
   display:flex;
   justify-content:center;
   align-items:center;
@@ -502,20 +501,23 @@ header{
   align-items:center;
 }
 .feev__leaderboard-card{
-  border-radius: 75px;
-  width:100%;
-  height:30rem;
-  display:flex;
+  height: 100%;
+  width: 100%;
+  display: flex;
   justify-content: center;
+  border-radius: 75px;
   align-items: center;
   margin:1rem;
-  background-color: var(--main-lightest-blue);
-}
+  background-color: var(--main-light-blue);
+  }
 .feev__leaderboard-message{
-  font-size:2rem;
-  font-weight: bolder;
-  padding-bottom: 25rem;
-  margin:0 1rem;
+  
+}
+.feev__leaderboard-display{
+  width: 100%;
+  height: 7rem;
+  display: flex;
+
 }
 
 /* Moe css */
