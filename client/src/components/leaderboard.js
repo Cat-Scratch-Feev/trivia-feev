@@ -5,10 +5,18 @@ import {QUERY_SCORES} from '../utils/queries';
 
 const LeaderBoard = () => {
     //const [users, setUsers] = useState([]);
-    const {loading, error, data} = useQuery(QUERY_SCORES);
+    const {loading, error, data, refetch} = useQuery(QUERY_SCORES);
+
+    useEffect(() => {
+        // Fetch the data again whenever the component is mounted
+        refetch();
+    }, [refetch]);
+    
     //Add loading and error content to render if data isn't present
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
+
+    
 
     const users = [...data.users];
     
