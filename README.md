@@ -45,13 +45,19 @@ Sign up with a Username, Email, and Password. From there you can begin taking qu
 
 ## Features
 ---
-- Full user authentification including secure password managment.
+- Full user authentication including secure password management.
+  
+- A large number of categories to choose from!
+  
+- A leaderboard to see how you stack up against the competition!
 
 - And more!
 
 ## Future Features
 ---
+- Scratch-Card daily reward program! Earn random feev-tokens by logging in each day!
 
+- Unlockable rewards! When you earn feev-tokens, you work towards unlocks like site themes and username decorations.
 
 ## Link to Live Page
 ---
