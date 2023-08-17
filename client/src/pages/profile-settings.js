@@ -50,7 +50,7 @@ const ProfileSettings = () => {
             <Link to="/"> back to the home page.</Link>
           </p>
         ) : (
-          <form className="login-signup__form" onSubmit={handleFormSubmit}>
+          <form className="login-signup__form profile-settings__form" onSubmit={handleFormSubmit}>
             <h2 className="form__title">Profile Settings</h2>
             <div className="form__label-input--pair">
               <label className="form__label">Username</label>
@@ -75,7 +75,7 @@ const ProfileSettings = () => {
               />
             </div>
             <button
-              className="login__button profile-settings__button btn-block btn-info"
+              className="profile-settings__button login__button  btn-block btn-info"
               style={{ cursor: "pointer" }}
               type="submit"
             >

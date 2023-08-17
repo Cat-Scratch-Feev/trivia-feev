@@ -20,6 +20,7 @@ body{
 }
 .body-text__indent{
   text-indent: 1rem;
+  margin: 0 0 2rem 0;
 }
 .name__wrap {
   display:flex;
@@ -90,7 +91,6 @@ header{
 .sideNav__wrap{
   width:20%;
   border-right: solid 0.1rem var(--main-dark-blue);
-  /* height:100%; */
   display:flex;
   justify-content:center;
  
@@ -149,12 +149,14 @@ header{
   align-items: center;
   background-color:var(--main-lightest-blue);
   border-radius: 66% 94% 85% 90% / 55% 68% 90% 85%;
+  margin: 3rem 0;
 }
 .form-input{
   border-radius:74px;
   border-color:transparent;
   margin:0.5rem;
   width:100%;
+  text-indent: 0.5rem;
 }
 .form__label{
   align-self:flex-start;
@@ -182,7 +184,6 @@ header{
 /* Profile Settings*/
 .profile-settings__button{
     width:8rem;
-  
 }
 /* Landing styling*/
 .feev__landing-main-wrap{
@@ -493,7 +494,7 @@ header{
   font-size:1rem;
 }
 
-/* leaderboard styling */ 
+/* Leaderboard styling */ 
 .feev__leaderboard-page-wrap{
   height:100%;
   width:100%;
@@ -522,17 +523,20 @@ header{
 .feev__leaderboard-display{
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 .feev__leaderboard--component{
-  width:100%;
+  width:60%;
 }
 .feev__leaderboard-message{
   font-size:2rem;
+  font-weight:bolder;
   margin:2rem;
   text-align: center;
 }
 .feev__leaderboard-container{
   display:flex;
+  justify-content: center;
 }
 .user-entry{
   margin:1rem;
@@ -575,7 +579,7 @@ header{
   background-color: var(--main-yellow);
   height:10rem;
 }
-/* Moe css */
+
 /* Home/Dashboard CSS */
 .welcome__dash--wrap{
   display:flex;
@@ -583,7 +587,7 @@ header{
   align-items: center;
 }
 .welcome-dash__title{
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bolder;
   margin:2rem;
 }
@@ -596,8 +600,6 @@ header{
   border-radius: 40px;
   width: 80%;
   padding: 20px 40px;
-  /* margin: 10px 10px; */
-  
 }
 .user-greeting{
   border-color: black;
@@ -619,11 +621,11 @@ header{
   margin:2rem;
 }
 .trivia__recc--title{
-  font-size:1.5rem;
+  font-size:2rem;
   font-weight:bolder;
 }
 .trivia__recc--subtitle{
-  font-size:1rem;
+  font-size:1.25rem;
 }
 /* Media Queries*/
 @media (max-width: 1000px) {
@@ -648,7 +650,7 @@ header{
     flex-flow: column nowrap;
   }
   .sideNav__wrap{
-    height:10%;
+   /*  height:10%; */
     border-right:none;
     border-bottom:solid 0.1rem var(--main-dark-blue);
     width:100%;
@@ -670,6 +672,9 @@ header{
   }
   .trivia-choice-card{
     flex-basis:45%;
+  }
+  .feev__leaderboard--component{
+    width:80%;
   }
 }
 
@@ -712,7 +717,6 @@ header{
     display:block;
   }
   .login-signup__form{
-    margin:0.5rem;
     width:100%;
     border-radius: 86% 100% 85% 100% / 55% 100% 70% 100%;
   }
@@ -775,6 +779,9 @@ header{
   }
   .quiz__category {
     height:8rem;
+  }
+  .feev__leaderboard--component{
+    width:100%;
   }
   
 }
