@@ -128,7 +128,7 @@ const Home = ({quizState, setQuizState}) => {
               </section>
               <section className="welcome__recc--wrap">
                 <h2 className="trivia__recc--title">trivia recommendations</h2>
-                <h3 className="trivia__recc--subtitle">get started with some trivia!</h3>
+                <h3 className="trivia__recc--subtitle body-text__indent">get started with some trivia!</h3>
                 <div className='trivia-group'>
                   {randomCategories.slice(0, 3).map((category, index) => (
                     <div className={`trivia-choice-card ${category.value}`} key={index}>

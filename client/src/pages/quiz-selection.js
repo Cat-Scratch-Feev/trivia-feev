@@ -15,8 +15,8 @@ const Quizzes = ({quizState, setQuizState}) => {
     return (
         <div className="feev__home">
             <div className="feev__trivia-select--wrap">
-            <h2 className="trivia__page-title">trivia categories</h2>
-            <p>pick a category!</p>
+                <h2 className="trivia__page-title">trivia categories</h2>
+                <p className="body-text__indent">pick a category!</p>
             <div className='trivia-card-holder'>
                 <h3 className='group-title'>Human Civilization</h3>
                 <div className='trivia-group'>
