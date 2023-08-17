@@ -75,7 +75,7 @@ const ProfileSettings = () => {
               />
             </div>
             <button
-              className="login__button btn-block btn-info"
+              className="login__button profile-settings__button btn-block btn-info"
               style={{ cursor: "pointer" }}
               type="submit"
             >
